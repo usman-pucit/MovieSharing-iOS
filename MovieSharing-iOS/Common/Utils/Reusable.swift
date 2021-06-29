@@ -34,3 +34,4 @@ extension ReusableView {
 
 extension UITableViewCell: ReusableView, NibProvidable{}
 extension UICollectionViewCell: ReusableView, NibProvidable{}
+extension UITableViewHeaderFooterView: ReusableView, NibProvidable{}

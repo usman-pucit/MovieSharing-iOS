@@ -19,9 +19,9 @@ class MovieTableViewCell: UITableViewCell{
     private lazy var layout : UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 25, left: 23, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         layout.minimumLineSpacing = 20
-        layout.itemSize = CGSize(width: 160, height: 300)
+        layout.itemSize = CGSize(width: 170, height: 300)
         return layout
     }()
     
@@ -30,6 +30,8 @@ class MovieTableViewCell: UITableViewCell{
             collectionView.reloadData()
         }
     }
+    
+    private var isGridView: Bool = true
     
     // MARK: - Configure Cell
     func configure(with viewModels: [MovieViewModel]) {
