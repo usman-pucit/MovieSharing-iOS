@@ -19,7 +19,9 @@ class MovieTableViewCell: UITableViewCell{
     private lazy var layout : UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 140, height: 180)
+        layout.sectionInset = UIEdgeInsets(top: 25, left: 23, bottom: 10, right: 0)
+        layout.minimumLineSpacing = 20
+        layout.itemSize = CGSize(width: 160, height: 300)
         return layout
     }()
     
@@ -39,8 +41,14 @@ class MovieTableViewCell: UITableViewCell{
 
 
 // MARK: UICollectionViewDelegate
+extension MovieTableViewCell: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
 
-extension MovieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: UICollectionViewDataSource
+extension MovieTableViewCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return datasource.count
     }

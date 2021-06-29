@@ -19,6 +19,7 @@ class MoviesViewController: UIViewController {
     private var cancellable: [AnyCancellable] = []
     private lazy var dataSource: [MovieSectionViewModel] = []{
         didSet{
+            tableView.tableFooterView = UIView()
             tableView.reloadData()
         }
     }
@@ -33,6 +34,7 @@ class MoviesViewController: UIViewController {
     }
     
     private func configureUI(){
+        title = "Movies"
         var sections = [MovieSectionViewModel]()
         var rows = [MovieViewModel]()
         rows.append(MovieViewModel(title: "A", image: nil))
@@ -103,6 +105,6 @@ extension MoviesViewController: UITableViewDataSource{
     }
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 370
     }
 }
