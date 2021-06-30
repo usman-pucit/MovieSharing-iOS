@@ -13,7 +13,6 @@ import Foundation
 protocol MoviesUseCaseType {
     func request(_ request: Request) -> AnyPublisher<Result<MoviesResponseModel, APIError>, Never>
 //    func fetchMovieDetails(_ request: Request) -> AnyPublisher<Result<MoviesModel, APIError>, Never>
-    func downloadImage(_ poster: String, size: PosterSize) -> AnyPublisher<UIImage?, Never>
 }
 
 class MoviesUseCase {
@@ -49,19 +48,5 @@ extension MoviesUseCase: MoviesUseCaseType {
 //    func fetchMovieDetails(_ request: Request) -> AnyPublisher<Result<MoviesModel, APIError>, Never> {
 //
 //    }
-    
-    /**
-        Download image request with background schedular
-     */
-    func downloadImage(_ poster: String, size: PosterSize) -> AnyPublisher<UIImage?, Never> {
-        return Deferred { return Just(poster) }
-        .flatMap({[unowned self] poster -> AnyPublisher<UIImage?, Never> in
-            let url = URL(string: poster)!
-            return self.apiClient.downloadImage(from: url)
-        })
-        .subscribe(on: Scheduler.backgroundWorkScheduler)
-        .receive(on: Scheduler.mainScheduler)
-        .share()
-        .eraseToAnyPublisher()
-    }
+
 }

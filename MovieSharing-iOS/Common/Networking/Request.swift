@@ -35,7 +35,8 @@ extension Request{
         let url = Environment.BASE_URL.appendingPathComponent("search")
         let parameters: [String : CustomStringConvertible] = [
             "key": Environment.API_KEY,
-            "part": "snippet"
+            "part": "snippet",
+            "maxResults": "30"
             ]
         return Request(url: url, parameters: parameters)
     }

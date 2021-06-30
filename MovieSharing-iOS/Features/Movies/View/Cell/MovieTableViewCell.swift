@@ -21,7 +21,7 @@ class MovieTableViewCell: UITableViewCell{
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         layout.minimumLineSpacing = 20
-        layout.itemSize = CGSize(width: 170, height: 300)
+        layout.itemSize = CGSize(width: 170, height: 320)
         return layout
     }()
     

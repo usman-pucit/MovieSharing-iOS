@@ -3,7 +3,7 @@
 //  MovieSharing-iOS
 //
 //  Created by Muhammad Usman on 29/06/2021.
-//  
+//
 //
 
 import Combine
@@ -21,18 +21,16 @@ enum MoviesViewModelState {
 }
 
 class MoviesViewModel {
-    
     @Published var isLoading = false
     /// define immutable `stateDidUpdate` property so that subscriber can only read from it.
     private(set) lazy var stateDidUpdate = stateDidUpdateSubject.eraseToAnyPublisher()
-    
+
     // MARK: - Private Properties
-    
+
     private var cancellables: [AnyCancellable] = []
     private let useCase: MoviesUseCaseType
     private let stateDidUpdateSubject = PassthroughSubject<MoviesViewModelState, Never>()
     private var movieItems = [MovieItems]()
-
     // MARK: Initializer
 
     init(useCase: MoviesUseCaseType) {
@@ -41,8 +39,7 @@ class MoviesViewModel {
 }
 
 extension MoviesViewModel: MoviesViewModelType {
-   
-    func request(_ request: Request){
+    func request(_ request: Request) {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         isLoading = true
@@ -59,22 +56,24 @@ extension MoviesViewModel: MoviesViewModelType {
                 }
             }.store(in: &cancellables)
     }
-    
+
     func prepareGridDatasource() -> [MovieSectionViewModel] {
         var gridDatasource = [MovieSectionViewModel]()
         let datasource = makeDatasource(movies: movieItems)
-        gridDatasource.append(MovieSectionViewModel(viewModels: datasource))
+        let chunkedArrays = datasource.chunked(into: 10)
+        chunkedArrays.forEach { array in
+            gridDatasource.append(MovieSectionViewModel(viewModels: array))
+        }
         return gridDatasource
     }
-    
+
     func prepareListDatasource() -> [MovieViewModel] {
         return makeDatasource(movies: movieItems)
     }
-    
+
     private func makeDatasource(movies: [MovieItems]) -> [MovieViewModel] {
-        return movies.map { [unowned self] movie in
-            MovieViewModelBuilder.prepareViewModel(movie: movie, image: { poster in self.useCase.downloadImage(poster, size: .small) })
+        return movies.map { movie in
+            MovieViewModelBuilder.prepareViewModel(movie: movie)
         }
     }
-    
 }

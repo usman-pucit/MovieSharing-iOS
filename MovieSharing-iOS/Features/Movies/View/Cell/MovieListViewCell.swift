@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import Foundation
+import Kingfisher
 
 // MARK: - MovieListViewCell
 class MovieListViewCell: UITableViewCell {
@@ -25,6 +26,7 @@ class MovieListViewCell: UITableViewCell {
         posterImage.layer.cornerRadius = 6
         posterImage.layer.masksToBounds = true
         titleLabel.text = viewModel.title
+        posterImage.kf.setImage(with: viewModel.imagePoster)
         mainView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
     }
 }

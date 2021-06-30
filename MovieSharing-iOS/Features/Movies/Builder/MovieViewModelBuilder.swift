@@ -10,7 +10,7 @@ import UIKit.UIImage
 import Combine
 
 struct MovieViewModelBuilder {
-    static func prepareViewModel(movie: MovieItems, image: (String) -> AnyPublisher<UIImage?, Never>)-> MovieViewModel{
-        return MovieViewModel(title: movie.snippet.title, image: image(movie.snippet.thumbnails.high.url))
+    static func prepareViewModel(movie: MovieItems)-> MovieViewModel{
+        return MovieViewModel(title: movie.snippet.title, imagePoster: URL(string: movie.snippet.thumbnails.high.url)!)
     }
 }

@@ -17,5 +17,5 @@ struct MovieSectionViewModel {
 // Row
 struct MovieViewModel {
     let title: String
-    let image: AnyPublisher<UIImage?, Never>?
+    let imagePoster: URL
 }

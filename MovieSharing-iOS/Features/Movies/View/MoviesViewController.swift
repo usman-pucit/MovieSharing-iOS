@@ -34,9 +34,9 @@ enum TableViewState{
     var cellHeight: CGFloat{
         switch self {
         case .grid:
-            return 330
+            return 350
         case .list:
-            return 270
+            return 260
         }
     }
 }
@@ -106,57 +106,6 @@ class MoviesViewController: UIViewController {
         }
     }
     
-//    private func renderListView(){
-//        if listState == .list {
-//            var rows = [MovieViewModel]()
-//            rows.append(MovieViewModel(title: "A", image: nil))
-//            rows.append(MovieViewModel(title: "B", image: nil))
-//            rows.append(MovieViewModel(title: "C", image: nil))
-//            rows.append(MovieViewModel(title: "A", image: nil))
-//            rows.append(MovieViewModel(title: "B", image: nil))
-//            rows.append(MovieViewModel(title: "C", image: nil))
-//            rows.append(MovieViewModel(title: "A", image: nil))
-//            rows.append(MovieViewModel(title: "B", image: nil))
-//            rows.append(MovieViewModel(title: "C", image: nil))
-//            rows.append(MovieViewModel(title: "D", image: nil))
-//            rows.append(MovieViewModel(title: "E", image: nil))
-//            rows.append(MovieViewModel(title: "F", image: nil))
-//            rows.append(MovieViewModel(title: "D", image: nil))
-//            rows.append(MovieViewModel(title: "E", image: nil))
-//            rows.append(MovieViewModel(title: "F", image: nil))
-//            rows.append(MovieViewModel(title: "D", image: nil))
-//            rows.append(MovieViewModel(title: "E", image: nil))
-//            rows.append(MovieViewModel(title: "F", image: nil))
-//            listDataSource = rows
-//        }else{
-//        var sections = [MovieSectionViewModel]()
-//        var rows = [MovieViewModel]()
-//        rows.append(MovieViewModel(title: "A", image: nil))
-//        rows.append(MovieViewModel(title: "B", image: nil))
-//        rows.append(MovieViewModel(title: "C", image: nil))
-//        rows.append(MovieViewModel(title: "A", image: nil))
-//        rows.append(MovieViewModel(title: "B", image: nil))
-//        rows.append(MovieViewModel(title: "C", image: nil))
-//        rows.append(MovieViewModel(title: "A", image: nil))
-//        rows.append(MovieViewModel(title: "B", image: nil))
-//        rows.append(MovieViewModel(title: "C", image: nil))
-//        sections.append(MovieSectionViewModel(viewModels: rows))
-//
-//        rows.removeAll()
-//        rows.append(MovieViewModel(title: "D", image: nil))
-//        rows.append(MovieViewModel(title: "E", image: nil))
-//        rows.append(MovieViewModel(title: "F", image: nil))
-//        rows.append(MovieViewModel(title: "D", image: nil))
-//        rows.append(MovieViewModel(title: "E", image: nil))
-//        rows.append(MovieViewModel(title: "F", image: nil))
-//        rows.append(MovieViewModel(title: "D", image: nil))
-//        rows.append(MovieViewModel(title: "E", image: nil))
-//        rows.append(MovieViewModel(title: "F", image: nil))
-//        sections.append(MovieSectionViewModel(viewModels: rows))
-//        dataSource = sections
-//        }
-//    }
-    
     private func handleError(_ message: String) {
         showAlert(with: "Error", message: message)
     }
@@ -215,7 +164,12 @@ extension MoviesViewController: UITableViewDataSource{
     }
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return listState.cellHeight
+        if listState == .grid {
+            return listState.cellHeight
+        }else{
+            let stringHeight = listDataSource[indexPath.row].title.height(constraintedWidth: tableView.frame.size.width-50, font: UIFont.systemFont(ofSize: 17))
+            return listState.cellHeight+stringHeight
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -14,8 +14,8 @@
             filePath = "MovieSharing-iOS/Features/Movies/ViewModel/MoviesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "request(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,10 +30,42 @@
             filePath = "MovieSharing-iOS/Features/Movies/ViewModel/MoviesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "request(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6767D502-145F-4CA4-BF39-4A14EFBAB70D - 9a96d9e8bc3da432"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieSharing_iOS.MoviesViewModel.request(MovieSharing_iOS.Request) -&gt; ()"
+                  moduleName = "MovieSharing-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Workspace/Personal/MovieSharing-iOS/MovieSharing-iOS/Features/Movies/ViewModel/MoviesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "682">
+               </Location>
+               <Location
+                  uuid = "6767D502-145F-4CA4-BF39-4A14EFBAB70D - 82d5c867ddddce3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;MovieSharing_iOS.MoviesResponseModel, MovieSharing_iOS.APIError&gt;) -&gt; () in MovieSharing_iOS.MoviesViewModel.request(MovieSharing_iOS.Request) -&gt; ()"
+                  moduleName = "MovieSharing-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Workspace/Personal/MovieSharing-iOS/MovieSharing-iOS/Features/Movies/ViewModel/MoviesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
