@@ -11,6 +11,6 @@ import Combine
 
 struct MovieViewModelBuilder {
     static func prepareViewModel(movie: MovieItems)-> MovieViewModel{
-        return MovieViewModel(videoId: movie.id?.videoId ?? "", playlistId: movie.id?.playlistId ?? "", title: movie.snippet.title, imagePoster: URL(string: movie.snippet.thumbnails.high.url)!)
+        return MovieViewModel(videoId: movie.id?.videoId, playlistId: movie.id?.playlistId, title: movie.snippet.title, imagePoster: URL(string: movie.snippet.thumbnails.high.url)!)
     }
 }

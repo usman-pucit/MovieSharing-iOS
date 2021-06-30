@@ -122,11 +122,7 @@ class MoviesViewController: UIViewController {
     
     private func didSelectMovie(movie: MovieViewModel){
         let viewController = MovieDetailsViewController.instantiate(fromAppStoryboard: .Main)
-        if movie.videoId.isEmpty {
-            viewController.playlistId = movie.playlistId
-        }else{
-            viewController.videoId = movie.videoId
-        }
+        viewController.movie = movie
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

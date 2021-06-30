@@ -32,6 +32,7 @@
 		1870D09D268CDBE9005D3BB6 /* MovieDetailViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D09C268CDBE9005D3BB6 /* MovieDetailViewModelBuilder.swift */; };
 		1870D0AE268CFBE4005D3BB6 /* DetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D0A3268CFBE4005D3BB6 /* DetailResponse.swift */; };
 		1870D0B0268CFBE4005D3BB6 /* MovieDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D0A5268CFBE4005D3BB6 /* MovieDetailsResponseModel.swift */; };
+		1870D0B6268D0E7F005D3BB6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D0B5268D0E7F005D3BB6 /* DataManager.swift */; };
 		18CCD525268B05AB0075C184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD524268B05AB0075C184 /* AppDelegate.swift */; };
 		18CCD527268B05AB0075C184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD526268B05AB0075C184 /* SceneDelegate.swift */; };
 		18CCD52E268B05AB0075C184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CCD52D268B05AB0075C184 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		1870D09C268CDBE9005D3BB6 /* MovieDetailViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelBuilder.swift; sourceTree = "<group>"; };
 		1870D0A3268CFBE4005D3BB6 /* DetailResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailResponse.swift; sourceTree = "<group>"; };
 		1870D0A5268CFBE4005D3BB6 /* MovieDetailsResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsResponseModel.swift; sourceTree = "<group>"; };
+		1870D0B5268D0E7F005D3BB6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		18CCD521268B05AB0075C184 /* MovieSharing-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieSharing-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CCD524268B05AB0075C184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CCD526268B05AB0075C184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 		18CCD5B0268B1B5D0075C184 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1870D0B5268D0E7F005D3BB6 /* DataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				18CCD527268B05AB0075C184 /* SceneDelegate.swift in Sources */,
 				1819B63A268BC8EA001CFD14 /* MovieListViewCell.swift in Sources */,
 				1819B614268B8098001CFD14 /* SettingsViewController.swift in Sources */,
+				1870D0B6268D0E7F005D3BB6 /* DataManager.swift in Sources */,
 				18CCD595268B08020075C184 /* Publisher.swift in Sources */,
 				18CCD5A1268B11EC0075C184 /* MovieViewModel.swift in Sources */,
 				18CCD5AF268B1A010075C184 /* Constants.swift in Sources */,

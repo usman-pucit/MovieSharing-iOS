@@ -407,6 +407,13 @@
                             <constraint firstItem="07t-ne-ES3" firstAttribute="height" secondItem="9La-b2-Vbo" secondAttribute="height" multiplier="0.475446" constant="0.5" id="jub-4e-n0O"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QTs-Vp-AZ1">
+                        <barButtonItem key="rightBarButtonItem" image="heart.fill" catalog="system" id="ssS-B0-qdE">
+                            <connections>
+                                <action selector="favouriteButtonTapped:" destination="w3U-YK-w22" id="SrI-vI-YEV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imagePoster" destination="07t-ne-ES3" id="z93-Sz-Mje"/>
                         <outlet property="imageThumbnail" destination="lHG-HM-JcK" id="wbF-yC-Fsq"/>
@@ -416,6 +423,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1E-4S-fHZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3036" y="-188.45577211394306"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MTi-pa-WXH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aOL-KQ-ON5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vc9-0D-PB9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="w3U-YK-w22" kind="relationship" relationship="rootViewController" id="HvI-QC-RHW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRo-hm-PJC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2096.8000000000002" y="-188.45577211394306"/>
         </scene>

@@ -19,11 +19,11 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var imagePoster: UIImageView!
     @IBOutlet weak var imageThumbnail: UIImageView!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
 
-    var videoId: String?
-    var playlistId: String?
+    var movie: MovieViewModel!
     private var viewModel: MovieDetailsViewModel!
     private var cancellable: [AnyCancellable] = []
     
@@ -34,6 +34,35 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         viewModel = MovieDetailsViewModel(useCase: MoviesUseCase())
         bindViewModel()
+        configureUI()
+        setupNavigationBarButton()
+    }
+    
+    private func configureUI(){
+        title = "Movie title"
+    }
+    
+    private func setupNavigationBarButton(){
+        var image: UIImage?
+        var id = UUID().uuidString
+        if let videoId = movie.videoId {
+            id = videoId
+        }else if let playlistId = movie.playlistId{
+            id = playlistId
+        }
+        
+        if DataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id}) {
+            image = UIImage(systemName: "heart.fill")
+        }else{
+            image = UIImage(systemName: "heart")
+        }
+        
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
+//        button.frame=CGRect(x: 10, y: 0, width: 50, height: 50)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     private func bindViewModel() {
@@ -42,7 +71,7 @@ class MovieDetailsViewController: UIViewController {
             self.handleResponse(state)
         }).store(in: &cancellable)
         
-        if let request = Request.movieDetails(videoId, playlistId: playlistId) {
+        if let request = Request.movieDetails(movie.videoId, playlistId: movie.playlistId) {
             viewModel.request(request)
         }else{
             handleError("Inavlid request")
@@ -72,5 +101,22 @@ class MovieDetailsViewController: UIViewController {
         showAlert(with: "Error", message: message)
     }
     
+    
+    @objc func favouriteButtonTapped(_ sender: Any){
+        var id = UUID().uuidString
+        if let videoId = movie.videoId {
+            id = videoId
+        }else if let playlistId = movie.playlistId{
+            id = playlistId
+        }
+        
+        if DataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id}) {
+            print("\n ## Object already there ..... ## \n")
+        }else{
+            DataManager.shared.append(self.movie)
+            setupNavigationBarButton()
+            print("\n ## Object already added ## \n")
+        }
+    }
     
 }
