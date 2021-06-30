@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import Combine
 import Foundation
 
 class MovieTableViewCell: UITableViewCell{
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    private(set) lazy var didSelectItem = selectedItemSubject.eraseToAnyPublisher()
+    private let selectedItemSubject = PassthroughSubject<MovieViewModel, Never>()
     
     
     // MARK: - Properties
@@ -45,7 +49,7 @@ class MovieTableViewCell: UITableViewCell{
 // MARK: UICollectionViewDelegate
 extension MovieTableViewCell: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        selectedItemSubject.send(datasource[indexPath.row])
     }
 }
 

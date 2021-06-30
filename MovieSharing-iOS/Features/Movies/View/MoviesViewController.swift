@@ -120,6 +120,12 @@ class MoviesViewController: UIViewController {
         }
     }
     
+    private func didSelectMovie(movie: MovieViewModel){
+        let viewController = MovieDetailsViewController.instantiate(fromAppStoryboard: .Main)
+        viewController.videoId = movie.videoId
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         remove(activityViewController)
@@ -128,7 +134,13 @@ class MoviesViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension MoviesViewController: UITableViewDelegate{}
+extension MoviesViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if listState == .list {
+            didSelectMovie(movie: listDataSource[indexPath.row])
+        }
+    }
+}
 
 // MARK: - UITableViewDatasource
 
@@ -153,6 +165,9 @@ extension MoviesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if listState == .grid {
             let cell = tableView.dequeueReusableCell(withClass: MovieTableViewCell.self)
+            cell.didSelectItem.sink { movie in
+                self.didSelectMovie(movie: movie)
+            }.store(in: &cancellable)
             cell.configure(with: gridDataSource[indexPath.section].viewModels)
             return cell
         }else{

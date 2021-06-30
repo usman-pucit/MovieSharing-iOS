@@ -41,12 +41,12 @@ extension Request{
         return Request(url: url, parameters: parameters)
     }
     
-    static func searchMovies(_ query: String) -> Request {
-        let url = Environment.BASE_URL.appendingPathComponent("search")
+    static func movieDetails(_ videoId: String) -> Request {
+        let url = Environment.BASE_URL.appendingPathComponent("videos")
         let parameters: [String : CustomStringConvertible] = [
             "key": Environment.API_KEY,
             "part": "snippet",
-            "q": "\(query)"
+            "id": "\(videoId)"
             ]
         return Request(url: url, parameters: parameters)
     }

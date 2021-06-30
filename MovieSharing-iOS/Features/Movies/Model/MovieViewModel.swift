@@ -16,6 +16,7 @@ struct MovieSectionViewModel {
 
 // Row
 struct MovieViewModel {
+    let videoId: String
     let title: String
     let imagePoster: URL
 }

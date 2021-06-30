@@ -3,16 +3,16 @@
 //  MovieSharing-iOS
 //
 //  Created by Muhammad Usman on 29/06/2021.
-//  
+//
 //
 
-import UIKit.UIImage
 import Combine
 import Foundation
+import UIKit.UIImage
 
 protocol MoviesUseCaseType {
     func request(_ request: Request) -> AnyPublisher<Result<MoviesResponseModel, APIError>, Never>
-//    func fetchMovieDetails(_ request: Request) -> AnyPublisher<Result<MoviesModel, APIError>, Never>
+    func movieDetails(_ request: Request) -> AnyPublisher<Result<MovieDetailsResponseModel, APIError>, Never>
 }
 
 class MoviesUseCase {
@@ -30,7 +30,6 @@ class MoviesUseCase {
 // MARK: - Extension
 
 extension MoviesUseCase: MoviesUseCaseType {
-    
     /**
         API request for fetching movies list
      */
@@ -41,12 +40,15 @@ extension MoviesUseCase: MoviesUseCaseType {
             .receive(on: Scheduler.mainScheduler)
             .eraseToAnyPublisher()
     }
-    
+
     /**
         API request for fetching movie details
      */
-//    func fetchMovieDetails(_ request: Request) -> AnyPublisher<Result<MoviesModel, APIError>, Never> {
-//
-//    }
-
+    func movieDetails(_ request: Request) -> AnyPublisher<Result<MovieDetailsResponseModel, APIError>, Never> {
+        return apiClient
+            .execute(request)
+            .subscribe(on: Scheduler.backgroundWorkScheduler)
+            .receive(on: Scheduler.mainScheduler)
+            .eraseToAnyPublisher()
+    }
 }
