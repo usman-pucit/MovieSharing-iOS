@@ -15,5 +15,5 @@ struct MovieDetailViewModel {
     let rating: String
     let description: String
     let posterImage: URL?
-    let thumnailImage: URL
+    let thumnailImage: URL?
 }

@@ -41,13 +41,25 @@ extension Request{
         return Request(url: url, parameters: parameters)
     }
     
-    static func movieDetails(_ videoId: String) -> Request {
-        let url = Environment.BASE_URL.appendingPathComponent("videos")
-        let parameters: [String : CustomStringConvertible] = [
-            "key": Environment.API_KEY,
-            "part": "snippet",
-            "id": "\(videoId)"
-            ]
-        return Request(url: url, parameters: parameters)
+    static func movieDetails(_ videoId: String?, playlistId: String?) -> Request?{
+        if let videoId = videoId {
+            let url = Environment.BASE_URL.appendingPathComponent("videos")
+            let parameters: [String : CustomStringConvertible] = [
+                "key": Environment.API_KEY,
+                "part": "snippet",
+                "id": "\(videoId)"
+                ]
+            return Request(url: url, parameters: parameters)
+        }else if let playlistId = playlistId{
+            let url = Environment.BASE_URL.appendingPathComponent("playlists")
+            let parameters: [String : CustomStringConvertible] = [
+                "key": Environment.API_KEY,
+                "part": "snippet",
+                "id": "\(playlistId)"
+                ]
+            return Request(url: url, parameters: parameters)
+        }else{
+            return nil
+        }
     }
 }

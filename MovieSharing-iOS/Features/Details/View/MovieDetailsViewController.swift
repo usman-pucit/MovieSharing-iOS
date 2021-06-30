@@ -22,7 +22,8 @@ class MovieDetailsViewController: UIViewController {
     
     // MARK: Properties
 
-    var videoId: String!
+    var videoId: String?
+    var playlistId: String?
     private var viewModel: MovieDetailsViewModel!
     private var cancellable: [AnyCancellable] = []
     
@@ -41,7 +42,11 @@ class MovieDetailsViewController: UIViewController {
             self.handleResponse(state)
         }).store(in: &cancellable)
         
-        viewModel.request(Request.movieDetails(videoId))
+        if let request = Request.movieDetails(videoId, playlistId: playlistId) {
+            viewModel.request(request)
+        }else{
+            handleError("Inavlid request")
+        }
     }
     
     private func handleResponse(_ result: MovieDetailsViewModelState) {

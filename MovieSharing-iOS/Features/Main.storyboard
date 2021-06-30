@@ -348,6 +348,7 @@
                                                             </label>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="C6X-Wy-G4P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PMJ-nL-TSU" secondAttribute="bottom" constant="19" id="4xm-vQ-QSd"/>
                                                             <constraint firstItem="C6X-Wy-G4P" firstAttribute="leading" secondItem="B4t-72-ckF" secondAttribute="leading" constant="25" id="5PM-oi-xiX"/>
                                                             <constraint firstItem="PMJ-nL-TSU" firstAttribute="top" secondItem="B4t-72-ckF" secondAttribute="top" constant="25" id="F5N-La-svA"/>
                                                             <constraint firstAttribute="trailing" secondItem="C6X-Wy-G4P" secondAttribute="trailing" constant="25" id="QN3-p0-2vI"/>
@@ -358,7 +359,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="C6X-Wy-G4P" firstAttribute="top" secondItem="lHG-HM-JcK" secondAttribute="bottom" constant="30" id="0go-1y-6zi"/>
+                                                    <constraint firstItem="C6X-Wy-G4P" firstAttribute="top" secondItem="lHG-HM-JcK" secondAttribute="bottom" priority="250" constant="30" id="0go-1y-6zi"/>
                                                     <constraint firstItem="lHG-HM-JcK" firstAttribute="leading" secondItem="umG-pB-2mU" secondAttribute="leading" constant="25" id="5cU-P2-hBr"/>
                                                     <constraint firstItem="PMJ-nL-TSU" firstAttribute="leading" secondItem="lHG-HM-JcK" secondAttribute="trailing" constant="25" id="95S-5T-9el"/>
                                                     <constraint firstItem="B4t-72-ckF" firstAttribute="top" secondItem="07t-ne-ES3" secondAttribute="bottom" id="Bgq-gx-2dw"/>
