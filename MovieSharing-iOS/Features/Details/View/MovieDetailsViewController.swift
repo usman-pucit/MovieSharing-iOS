@@ -19,11 +19,11 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var imagePoster: UIImageView!
     @IBOutlet weak var imageThumbnail: UIImageView!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     // MARK: Properties
 
     var movie: MovieViewModel!
+    private var activityIndicator : ActivityViewController = ActivityViewController.loadFromNib()
     private var viewModel: MovieDetailsViewModel!
     private var cancellable: [AnyCancellable] = []
     
@@ -33,13 +33,14 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MovieDetailsViewModel(useCase: MoviesUseCase())
-        bindViewModel()
         configureUI()
+        bindViewModel()
         setupNavigationBarButton()
     }
     
     private func configureUI(){
         title = "Movie title"
+        add(activityIndicator)
     }
     
     private func setupNavigationBarButton(){
@@ -60,7 +61,6 @@ class MovieDetailsViewController: UIViewController {
         let button = UIButton(type: UIButton.ButtonType.custom)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
-//        button.frame=CGRect(x: 10, y: 0, width: 50, height: 50)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
     }
@@ -71,7 +71,12 @@ class MovieDetailsViewController: UIViewController {
             self.handleResponse(state)
         }).store(in: &cancellable)
         
-        if let request = Request.movieDetails(movie.videoId, playlistId: movie.playlistId) {
+        activityIndicator.setTitle(title: "Loading details")
+        viewModel.$isLoading.sink(receiveValue: { isLoading in
+            self.activityIndicator.view.isHidden = !isLoading
+        }).store(in: &cancellable)
+        
+        if let request = Request.movieDetails(movie.videoId, playlistId: movie.playlistId, channelId: movie.channelId) {
             viewModel.request(request)
         }else{
             handleError("Inavlid request")
@@ -117,6 +122,11 @@ class MovieDetailsViewController: UIViewController {
             setupNavigationBarButton()
             log.printLog("\n ## Object already added ## \n")
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        remove(activityIndicator)
     }
     
 }

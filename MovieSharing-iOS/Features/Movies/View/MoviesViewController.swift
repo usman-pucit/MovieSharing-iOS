@@ -112,9 +112,11 @@ class MoviesViewController: UIViewController {
     
     @IBAction func didChangeSegmentControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
+            tableView.allowsSelection = false
             listState = .grid
             gridDataSource = viewModel.prepareGridDatasource()
         }else{
+            tableView.allowsSelection = true
             listState = .list
             listDataSource = viewModel.prepareListDatasource()
         }
@@ -129,6 +131,12 @@ class MoviesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         remove(activityViewController)
+    }
+}
+
+extension MoviesViewController: ItemSelected{
+    func didItemGetSelected(movie: MovieViewModel) {
+        didSelectMovie(movie: movie)
     }
 }
 
@@ -165,9 +173,7 @@ extension MoviesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if listState == .grid {
             let cell = tableView.dequeueReusableCell(withClass: MovieTableViewCell.self)
-            cell.didSelectItem.sink { movie in
-                self.didSelectMovie(movie: movie)
-            }.store(in: &cancellable)
+            cell.delegate = self
             cell.configure(with: gridDataSource[indexPath.section].viewModels)
             return cell
         }else{

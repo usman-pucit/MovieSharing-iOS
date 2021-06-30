@@ -24,11 +24,13 @@ struct Id : Codable {
     let kind : String?
     let videoId : String?
     let playlistId: String?
+    let channelId: String?
     
     enum CodingKeys: String, CodingKey {
         case playlistId = "playlistId"
         case kind = "kind"
         case videoId = "videoId"
+        case channelId = "channelId"
     }
 
     init(from decoder: Decoder) throws {
@@ -36,6 +38,7 @@ struct Id : Codable {
         kind = try values.decodeIfPresent(String.self, forKey: .kind)
         videoId = try values.decodeIfPresent(String.self, forKey: .videoId)
         playlistId = try values.decodeIfPresent(String.self, forKey: .playlistId)
+        channelId = try values.decodeIfPresent(String.self, forKey: .channelId)
     }
 }
 

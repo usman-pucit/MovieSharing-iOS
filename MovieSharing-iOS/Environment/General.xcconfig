@@ -8,7 +8,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-API_KEY              = AIzaSyAiG-lMTEIo8ec4BhpQRJzqWJpTLAnq_cM
+API_KEY              = AIzaSyBS7aTi5zO6n8U5zBLA_KiT8V-tF2ntpJM
 BASE_URL             = https:/$()/youtube.googleapis.com/youtube/v3/
 IMAGE_URL            = https:/$()/i.ytimg.com/vi/
 ORIGINAL_IMAGE_URL   = https:/$()/image.tmdb.org/t/p/original

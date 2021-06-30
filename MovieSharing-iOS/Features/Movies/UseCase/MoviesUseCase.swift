@@ -34,6 +34,9 @@ extension MoviesUseCase: MoviesUseCaseType {
         API request for fetching movies list
      */
     func request(_ request: Request) -> AnyPublisher<Result<MoviesResponseModel, APIError>, Never> {
+        log.printLog("/n URL: \(request.url) /n")
+        log.printLog("/n PARAMS: \(request.parameters) /n")
+
         return apiClient
             .execute(request)
             .subscribe(on: Scheduler.backgroundWorkScheduler)
@@ -46,7 +49,7 @@ extension MoviesUseCase: MoviesUseCaseType {
      */
     func movieDetails(_ request: Request) -> AnyPublisher<Result<MovieDetailsResponseModel, APIError>, Never> {
         log.printLog("/n URL: \(request.url) /n")
-        log.printLog("/n URL: \(request.parameters) /n")
+        log.printLog("/n PARAMS: \(request.parameters) /n")
         return apiClient
             .execute(request)
             .subscribe(on: Scheduler.backgroundWorkScheduler)

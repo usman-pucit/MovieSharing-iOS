@@ -7,48 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "48F1FCE9-174B-4888-89C3-00C7871C3BF1"
-            shouldBeEnabled = "Yes"
+            uuid = "3BB3A22A-3645-4C77-918E-12CC91B6E0ED"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieSharing-iOS/Features/Details/View/MovieDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "setupNavigationBarButton()"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "bindViewModel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9819788B-6FCA-4EF7-8B1F-845CB82A1976"
+            uuid = "66103F1B-BE56-401F-8C99-DEC9E0E935F6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MovieSharing-iOS/Features/Details/View/MovieDetailsViewController.swift"
+            filePath = "MovieSharing-iOS/Common/Networking/Request.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "setupNavigationBarButton()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "630D9D90-C31C-4D1D-9C07-6D82AF6DB969"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MovieSharing-iOS/Features/Details/View/MovieDetailsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "setupNavigationBarButton()"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "movieDetails(_:playlistId:channelId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

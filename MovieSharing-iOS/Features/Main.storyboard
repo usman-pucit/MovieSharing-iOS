@@ -83,9 +83,19 @@
                                                                             <constraint firstAttribute="trailing" secondItem="BMM-wL-S0g" secondAttribute="trailing" id="xCv-YT-ode"/>
                                                                         </constraints>
                                                                     </view>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-q6-5kF">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="180"/>
+                                                                        <connections>
+                                                                            <action selector="cellTapped:" destination="tw7-Gg-RW2" eventType="touchUpInside" id="GPC-9n-TsM"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="4Uz-q6-5kF" secondAttribute="trailing" id="717-S7-G6W"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="4Uz-q6-5kF" secondAttribute="bottom" id="G9j-wm-tLf"/>
+                                                                    <constraint firstItem="4Uz-q6-5kF" firstAttribute="top" secondItem="dvQ-cM-nnL" secondAttribute="top" id="Hx5-g0-ZOM"/>
                                                                     <constraint firstItem="pDl-7P-8Rj" firstAttribute="leading" secondItem="dvQ-cM-nnL" secondAttribute="leading" id="Qyt-rg-G6Z"/>
+                                                                    <constraint firstItem="4Uz-q6-5kF" firstAttribute="leading" secondItem="dvQ-cM-nnL" secondAttribute="leading" id="Tva-ZR-Wua"/>
                                                                     <constraint firstAttribute="trailing" secondItem="pDl-7P-8Rj" secondAttribute="trailing" id="XN8-D6-G6J"/>
                                                                     <constraint firstAttribute="bottom" secondItem="pDl-7P-8Rj" secondAttribute="bottom" id="bHB-1V-yr4"/>
                                                                     <constraint firstItem="pDl-7P-8Rj" firstAttribute="top" secondItem="dvQ-cM-nnL" secondAttribute="top" id="o1k-PK-GSr"/>
@@ -151,10 +161,29 @@
                     <view key="view" contentMode="scaleToFill" id="E2W-N5-mkZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ue4-uI-UI8">
+                                <rect key="frame" x="0.0" y="59" width="375" height="559"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="AXl-OK-ffk" id="FXk-jy-Psh"/>
+                                    <outlet property="delegate" destination="AXl-OK-ffk" id="Hur-qV-ckG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Wc5-SN-RWN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wc5-SN-RWN" firstAttribute="trailing" secondItem="ue4-uI-UI8" secondAttribute="trailing" id="9jK-52-Nyx"/>
+                            <constraint firstItem="ue4-uI-UI8" firstAttribute="leading" secondItem="Wc5-SN-RWN" secondAttribute="leading" id="BT0-fU-Phi"/>
+                            <constraint firstItem="Wc5-SN-RWN" firstAttribute="bottom" secondItem="ue4-uI-UI8" secondAttribute="bottom" id="Jr0-N3-6IL"/>
+                            <constraint firstItem="ue4-uI-UI8" firstAttribute="top" secondItem="Wc5-SN-RWN" secondAttribute="top" constant="15" id="ojP-Pj-QFj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Spw-ww-Dqq"/>
+                    <connections>
+                        <outlet property="tableView" destination="ue4-uI-UI8" id="Yvh-jq-KVi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dX-c8-YAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

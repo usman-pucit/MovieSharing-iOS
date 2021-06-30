@@ -36,12 +36,14 @@ extension Request{
         let parameters: [String : CustomStringConvertible] = [
             "key": Environment.API_KEY,
             "part": "snippet",
+            "type": "video",
+            "videoCategoryId": "17",
             "maxResults": "30"
             ]
         return Request(url: url, parameters: parameters)
     }
     
-    static func movieDetails(_ videoId: String?, playlistId: String?) -> Request?{
+    static func movieDetails(_ videoId: String?, playlistId: String?, channelId: String?) -> Request?{
         if let videoId = videoId {
             let url = Environment.BASE_URL.appendingPathComponent("videos")
             let parameters: [String : CustomStringConvertible] = [
@@ -56,6 +58,14 @@ extension Request{
                 "key": Environment.API_KEY,
                 "part": "snippet",
                 "id": "\(playlistId)"
+                ]
+            return Request(url: url, parameters: parameters)
+        }else if let channelId = channelId {
+            let url = Environment.BASE_URL.appendingPathComponent("channels")
+            let parameters: [String : CustomStringConvertible] = [
+                "key": Environment.API_KEY,
+                "part": "snippet",
+                "id": "\(channelId)"
                 ]
             return Request(url: url, parameters: parameters)
         }else{

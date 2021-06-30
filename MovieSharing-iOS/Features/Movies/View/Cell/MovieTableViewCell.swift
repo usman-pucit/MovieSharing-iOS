@@ -13,13 +13,14 @@ class MovieTableViewCell: UITableViewCell{
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
+    var delegate: ItemSelected?
     
-    private(set) lazy var didSelectItem = selectedItemSubject.eraseToAnyPublisher()
-    private let selectedItemSubject = PassthroughSubject<MovieViewModel, Never>()
-    
+//    private(set) lazy var didSelectItem = selectedItemSubject.eraseToAnyPublisher()
+//    private let selectedItemSubject = PassthroughSubject<MovieViewModel, Never>()
+//
     
     // MARK: - Properties
-    
+    private var cancellable: [AnyCancellable] = []
     private lazy var layout : UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -45,11 +46,16 @@ class MovieTableViewCell: UITableViewCell{
     
 }
 
+extension MovieTableViewCell: ItemSelected{
+    func didItemGetSelected(movie: MovieViewModel) {
+        delegate?.didItemGetSelected(movie: movie)
+    }
+}
 
 // MARK: UICollectionViewDelegate
 extension MovieTableViewCell: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItemSubject.send(datasource[indexPath.row])
+        
     }
 }
 
@@ -61,6 +67,7 @@ extension MovieTableViewCell: UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(MovieCollectionViewCell.self, for: indexPath)
+        cell.delegate = self
         cell.configure(with: datasource[indexPath.row])
         return cell
     }
