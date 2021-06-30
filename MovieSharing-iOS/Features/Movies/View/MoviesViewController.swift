@@ -76,7 +76,7 @@ class MoviesViewController: UIViewController {
         title = "Movies"
         tableView.tableFooterView = UIView()
         tableView.registerNib(cellClass: MovieHeaderViewCell.self)
-        
+        tableView.registerNib(cellClass: MovieListViewCell.self)
         // adding acvtivity loader screen
         add(activityViewController)
     }

@@ -111,11 +111,11 @@ class MovieDetailsViewController: UIViewController {
         }
         
         if DataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id}) {
-            print("\n ## Object already there ..... ## \n")
+            log.printLog("\n ## Object already there ..... ## \n")
         }else{
             DataManager.shared.append(self.movie)
             setupNavigationBarButton()
-            print("\n ## Object already added ## \n")
+            log.printLog("\n ## Object already added ## \n")
         }
     }
     

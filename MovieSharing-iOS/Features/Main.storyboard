@@ -116,51 +116,6 @@
                                             <outlet property="collectionView" destination="hQX-Bn-010" id="JjG-YV-cog"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieListViewCell" id="3Th-vI-OSl" customClass="MovieListViewCell" customModule="MovieSharing_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="324.5" width="375" height="88"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Th-vI-OSl" id="cwr-gO-1A1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsk-EU-Zs1">
-                                                    <rect key="frame" x="25" y="10" width="325" height="207"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="Bq9-gd-gUj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="207"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="207" id="Xcc-wl-AqA"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Bq9-gd-gUj" firstAttribute="leading" secondItem="tsk-EU-Zs1" secondAttribute="leading" id="Ctx-Ap-vIP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Bq9-gd-gUj" secondAttribute="trailing" id="Spj-MC-ts3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Bq9-gd-gUj" secondAttribute="bottom" id="T7P-QC-HJA"/>
-                                                        <constraint firstItem="Bq9-gd-gUj" firstAttribute="top" secondItem="tsk-EU-Zs1" secondAttribute="top" id="jcw-CA-87d"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S91-pv-Qye">
-                                                    <rect key="frame" x="25" y="229" width="325" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="tsk-EU-Zs1" firstAttribute="leading" secondItem="cwr-gO-1A1" secondAttribute="leading" constant="25" id="42D-J7-Pfu"/>
-                                                <constraint firstItem="tsk-EU-Zs1" firstAttribute="top" secondItem="cwr-gO-1A1" secondAttribute="top" constant="10" id="5U1-IY-eAo"/>
-                                                <constraint firstAttribute="trailing" secondItem="tsk-EU-Zs1" secondAttribute="trailing" constant="25" id="5bc-dj-wNS"/>
-                                                <constraint firstItem="S91-pv-Qye" firstAttribute="trailing" secondItem="tsk-EU-Zs1" secondAttribute="trailing" id="AOT-OI-cax"/>
-                                                <constraint firstItem="S91-pv-Qye" firstAttribute="leading" secondItem="tsk-EU-Zs1" secondAttribute="leading" id="BCv-aU-VYw"/>
-                                                <constraint firstItem="S91-pv-Qye" firstAttribute="top" secondItem="tsk-EU-Zs1" secondAttribute="bottom" constant="12" id="PLd-5I-ffk"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="mainView" destination="tsk-EU-Zs1" id="oS5-Ob-HIA"/>
-                                            <outlet property="posterImage" destination="Bq9-gd-gUj" id="X2k-hE-1wz"/>
-                                            <outlet property="titleLabel" destination="S91-pv-Qye" id="Z10-aL-CDg"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BZO-RZ-Lp6" id="ZEF-9g-Fy0"/>

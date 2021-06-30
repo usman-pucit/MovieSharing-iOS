@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieListViewCell" id="np1-fW-Goa" customClass="MovieListViewCell" customModule="MovieSharing_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="np1-fW-Goa" id="HCb-7F-bc8">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXF-Tc-vFe">
+                        <rect key="frame" x="25" y="10" width="325" height="207"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="WS1-un-SXd">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="207" id="b6E-Kt-aZA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WS1-un-SXd" firstAttribute="top" secondItem="AXF-Tc-vFe" secondAttribute="top" id="8oY-yL-ysC"/>
+                            <constraint firstAttribute="bottom" secondItem="WS1-un-SXd" secondAttribute="bottom" id="WfU-lr-VUJ"/>
+                            <constraint firstAttribute="trailing" secondItem="WS1-un-SXd" secondAttribute="trailing" id="b7v-x3-5Pg"/>
+                            <constraint firstItem="WS1-un-SXd" firstAttribute="leading" secondItem="AXF-Tc-vFe" secondAttribute="leading" id="fER-64-4Y3"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ue2-WX-Xkk">
+                        <rect key="frame" x="25" y="229" width="325" height="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AXF-Tc-vFe" firstAttribute="leading" secondItem="HCb-7F-bc8" secondAttribute="leading" constant="25" id="8Y9-wq-wZs"/>
+                    <constraint firstItem="AXF-Tc-vFe" firstAttribute="top" secondItem="HCb-7F-bc8" secondAttribute="top" constant="10" id="CIX-BB-784"/>
+                    <constraint firstItem="ue2-WX-Xkk" firstAttribute="leading" secondItem="AXF-Tc-vFe" secondAttribute="leading" id="bH8-rh-Rup"/>
+                    <constraint firstAttribute="trailing" secondItem="AXF-Tc-vFe" secondAttribute="trailing" constant="25" id="dex-zX-6cT"/>
+                    <constraint firstItem="ue2-WX-Xkk" firstAttribute="trailing" secondItem="AXF-Tc-vFe" secondAttribute="trailing" id="oyX-wh-LXT"/>
+                    <constraint firstItem="ue2-WX-Xkk" firstAttribute="top" secondItem="AXF-Tc-vFe" secondAttribute="bottom" constant="12" id="sz8-R4-qf3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="mainView" destination="AXF-Tc-vFe" id="ZMF-aN-7yq"/>
+                <outlet property="posterImage" destination="WS1-un-SXd" id="z1B-B0-DhY"/>
+                <outlet property="titleLabel" destination="ue2-WX-Xkk" id="Az1-sC-2hW"/>
+            </connections>
+            <point key="canvasLocation" x="-24" y="13"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder_image" width="1500" height="1500"/>
+    </resources>
+</document>

@@ -8,12 +8,10 @@
 import UIKit
 
 class ActivityViewController: UIViewController {
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
 }

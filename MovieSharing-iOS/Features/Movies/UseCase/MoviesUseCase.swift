@@ -45,10 +45,8 @@ extension MoviesUseCase: MoviesUseCaseType {
         API request for fetching movie details
      */
     func movieDetails(_ request: Request) -> AnyPublisher<Result<MovieDetailsResponseModel, APIError>, Never> {
-        print("/n ###### REQUEST ##### /n")
-        print("/n URL: \(request.url) /n")
-        print("/n URL: \(request.parameters) /n")
-        print("/n ###### REQUEST ##### /n")
+        log.printLog("/n URL: \(request.url) /n")
+        log.printLog("/n URL: \(request.parameters) /n")
         return apiClient
             .execute(request)
             .subscribe(on: Scheduler.backgroundWorkScheduler)
