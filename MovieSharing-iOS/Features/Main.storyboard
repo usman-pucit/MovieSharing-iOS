@@ -61,7 +61,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDl-7P-8Rj">
                                                                         <rect key="frame" x="0.0" y="0.0" width="155" height="180"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_poster" translatesAutoresizingMaskIntoConstraints="NO" id="BMM-wL-S0g">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="BMM-wL-S0g">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="155" height="145"/>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdX-A9-dAc">
@@ -69,7 +69,7 @@
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="30" id="3Id-gm-V60"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
@@ -127,7 +127,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsk-EU-Zs1">
                                                     <rect key="frame" x="25" y="10" width="325" height="207"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_poster" translatesAutoresizingMaskIntoConstraints="NO" id="Bq9-gd-gUj">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="Bq9-gd-gUj">
                                                             <rect key="frame" x="0.0" y="0.0" width="325" height="207"/>
                                                         </imageView>
                                                     </subviews>
@@ -143,7 +143,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="472-mv-y9p"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -306,7 +306,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="movie_poster" width="877" height="1390"/>
+        <image name="placeholder_image" width="1500" height="1500"/>
         <image name="tv" catalog="system" width="128" height="97"/>
         <image name="tv.fill" catalog="system" width="128" height="97"/>
         <systemColor name="systemBackgroundColor">

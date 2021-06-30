@@ -16,6 +16,13 @@
 		1819B63C268BCE5A001CFD14 /* MovieHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1819B63B268BCE5A001CFD14 /* MovieHeaderViewCell.xib */; };
 		1819B63E268BCFC4001CFD14 /* MovieHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819B63D268BCFC4001CFD14 /* MovieHeaderViewCell.swift */; };
 		1819B640268BD79A001CFD14 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819B63F268BD79A001CFD14 /* UIView.swift */; };
+		181E64F7268C26F1002BC2DB /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181E64F5268C26F1002BC2DB /* ActivityViewController.xib */; };
+		181E64F8268C26F1002BC2DB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E64F6268C26F1002BC2DB /* ActivityViewController.swift */; };
+		181E64FA268C2887002BC2DB /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E64F9268C2887002BC2DB /* UIViewController.swift */; };
+		181E64FF268C7B3C002BC2DB /* General.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 181E64FD268C7B3C002BC2DB /* General.xcconfig */; };
+		181E6500268C7B3C002BC2DB /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E64FE268C7B3C002BC2DB /* Environment.swift */; };
+		181E650F268C8524002BC2DB /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E6506268C8524002BC2DB /* Response.swift */; };
+		181E6511268C8524002BC2DB /* MoviesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E6508268C8524002BC2DB /* MoviesResponseModel.swift */; };
 		18CCD525268B05AB0075C184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD524268B05AB0075C184 /* AppDelegate.swift */; };
 		18CCD527268B05AB0075C184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD526268B05AB0075C184 /* SceneDelegate.swift */; };
 		18CCD52E268B05AB0075C184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CCD52D268B05AB0075C184 /* Assets.xcassets */; };
@@ -71,6 +78,13 @@
 		1819B63B268BCE5A001CFD14 /* MovieHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieHeaderViewCell.xib; sourceTree = "<group>"; };
 		1819B63D268BCFC4001CFD14 /* MovieHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHeaderViewCell.swift; sourceTree = "<group>"; };
 		1819B63F268BD79A001CFD14 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		181E64F5268C26F1002BC2DB /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
+		181E64F6268C26F1002BC2DB /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		181E64F9268C2887002BC2DB /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		181E64FD268C7B3C002BC2DB /* General.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = General.xcconfig; sourceTree = "<group>"; };
+		181E64FE268C7B3C002BC2DB /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		181E6506268C8524002BC2DB /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		181E6508268C8524002BC2DB /* MoviesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesResponseModel.swift; sourceTree = "<group>"; };
 		18CCD521268B05AB0075C184 /* MovieSharing-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieSharing-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CCD524268B05AB0075C184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CCD526268B05AB0075C184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +203,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		181E64F4268C26AF002BC2DB /* ActivityScreen */ = {
+			isa = PBXGroup;
+			children = (
+				181E64F6268C26F1002BC2DB /* ActivityViewController.swift */,
+				181E64F5268C26F1002BC2DB /* ActivityViewController.xib */,
+			);
+			path = ActivityScreen;
+			sourceTree = "<group>";
+		};
+		181E6501268C8517002BC2DB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				181E6506268C8524002BC2DB /* Response.swift */,
+				181E6508268C8524002BC2DB /* MoviesResponseModel.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		18CCD518268B05AB0075C184 = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +304,7 @@
 		18CCD557268B07540075C184 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				181E64F4268C26AF002BC2DB /* ActivityScreen */,
 				18CCD5B0268B1B5D0075C184 /* Managers */,
 				18CCD5A6268B142C0075C184 /* Utils */,
 				18CCD59B268B081B0075C184 /* Extensions */,
@@ -320,6 +353,7 @@
 		18CCD588268B08020075C184 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				181E6501268C8517002BC2DB /* Response */,
 				18CCD589268B08020075C184 /* MoviesModel.swift */,
 				18CCD5A0268B11EC0075C184 /* MovieViewModel.swift */,
 				18CCD5AC268B19D50075C184 /* PosterSize.swift */,
@@ -345,6 +379,7 @@
 				18CCD5A4268B13A40075C184 /* UICollectionView.swift */,
 				18CCD5B5268B231E0075C184 /* UITableView.swift */,
 				1819B63F268BD79A001CFD14 /* UIView.swift */,
+				181E64F9268C2887002BC2DB /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +387,8 @@
 		18CCD59C268B0CE60075C184 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
+				181E64FE268C7B3C002BC2DB /* Environment.swift */,
+				181E64FD268C7B3C002BC2DB /* General.xcconfig */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -500,6 +537,8 @@
 				18CCD593268B08020075C184 /* Main.storyboard in Resources */,
 				1819B63C268BCE5A001CFD14 /* MovieHeaderViewCell.xib in Resources */,
 				18CCD52E268B05AB0075C184 /* Assets.xcassets in Resources */,
+				181E64F7268C26F1002BC2DB /* ActivityViewController.xib in Resources */,
+				181E64FF268C7B3C002BC2DB /* General.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CCD525268B05AB0075C184 /* AppDelegate.swift in Sources */,
+				181E6500268C7B3C002BC2DB /* Environment.swift in Sources */,
 				18CCD5A3268B12AF0075C184 /* MovieCollectionViewCell.swift in Sources */,
 				18CCD5A5268B13A40075C184 /* UICollectionView.swift in Sources */,
 				1819B638268B8120001CFD14 /* FavouritesViewController.swift in Sources */,
@@ -537,9 +577,11 @@
 				1819B640268BD79A001CFD14 /* UIView.swift in Sources */,
 				18CCD597268B08020075C184 /* NetworkResponse.swift in Sources */,
 				18CCD5AB268B176E0075C184 /* MovieViewModelBuilder.swift in Sources */,
+				181E64F8268C26F1002BC2DB /* ActivityViewController.swift in Sources */,
 				18CCD5B4268B22A50075C184 /* MovieTableViewCell.swift in Sources */,
 				18CCD5A8268B14390075C184 /* Reusable.swift in Sources */,
 				18CCD591268B08020075C184 /* MoviesUseCase.swift in Sources */,
+				181E6511268C8524002BC2DB /* MoviesResponseModel.swift in Sources */,
 				1819B615268B8098001CFD14 /* SettingsViewModel.swift in Sources */,
 				18CCD5AD268B19D50075C184 /* PosterSize.swift in Sources */,
 				18CCD598268B08020075C184 /* Request.swift in Sources */,
@@ -550,9 +592,11 @@
 				18CCD595268B08020075C184 /* Publisher.swift in Sources */,
 				18CCD5A1268B11EC0075C184 /* MovieViewModel.swift in Sources */,
 				18CCD5AF268B1A010075C184 /* Constants.swift in Sources */,
+				181E64FA268C2887002BC2DB /* UIViewController.swift in Sources */,
 				18CCD5B6268B231E0075C184 /* UITableView.swift in Sources */,
 				1819B62F268B8120001CFD14 /* FavouritesModel.swift in Sources */,
 				1819B63E268BCFC4001CFD14 /* MovieHeaderViewCell.swift in Sources */,
+				181E650F268C8524002BC2DB /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +645,7 @@
 /* Begin XCBuildConfiguration section */
 		18CCD549268B05AC0075C184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -662,6 +707,7 @@
 		};
 		18CCD54A268B05AC0075C184 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -717,6 +763,7 @@
 		};
 		18CCD54C268B05AC0075C184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -735,6 +782,7 @@
 		};
 		18CCD54D268B05AC0075C184 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -753,6 +801,7 @@
 		};
 		18CCD54F268B05AC0075C184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -774,6 +823,7 @@
 		};
 		18CCD550268B05AC0075C184 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -795,6 +845,7 @@
 		};
 		18CCD552268B05AC0075C184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -814,6 +865,7 @@
 		};
 		18CCD553268B05AC0075C184 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181E64FD268C7B3C002BC2DB /* General.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -23,9 +23,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configure Cell
     func configure(with viewModel: MovieViewModel) {
-        posterImage.layer.cornerRadius = 4
+        posterImage.layer.cornerRadius = 6
         posterImage.layer.masksToBounds = true
         titleLabel.text = viewModel.title
+        viewModel.image?.sink(receiveValue: { image in
+            self.posterImage.image = image
+        }).store(in: &cancellable)
         mainView.addShadow(offset: CGSize.init(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
     }
 }

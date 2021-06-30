@@ -15,7 +15,7 @@ protocol MoviesViewModelType {
 
 /// define all states of view.
 enum MoviesViewModelState {
-    case show([MovieViewModel])
+    case show([MovieSectionViewModel])
     case error(String)
     case noResults
 }
@@ -31,6 +31,7 @@ class MoviesViewModel {
     private var cancellables: [AnyCancellable] = []
     private let useCase: MoviesUseCaseType
     private let stateDidUpdateSubject = PassthroughSubject<MoviesViewModelState, Never>()
+    private var movieItems = [MovieItems]()
 
     // MARK: Initializer
 
@@ -51,14 +52,26 @@ extension MoviesViewModel: MoviesViewModelType {
                 self.isLoading = false
                 switch result {
                 case .success(let value):
-                    self.stateDidUpdateSubject.send(.show(self.makeDatasource(movies: value)))
+                    self.movieItems = value.items
+                    self.stateDidUpdateSubject.send(.show(self.prepareGridDatasource()))
                 case .failure(let error):
                     self.stateDidUpdateSubject.send(.error(error.localizedDescription))
                 }
             }.store(in: &cancellables)
     }
     
-    private func makeDatasource(movies: [MoviesModel]) -> [MovieViewModel] {
+    func prepareGridDatasource() -> [MovieSectionViewModel] {
+        var gridDatasource = [MovieSectionViewModel]()
+        let datasource = makeDatasource(movies: movieItems)
+        gridDatasource.append(MovieSectionViewModel(viewModels: datasource))
+        return gridDatasource
+    }
+    
+    func prepareListDatasource() -> [MovieViewModel] {
+        return makeDatasource(movies: movieItems)
+    }
+    
+    private func makeDatasource(movies: [MovieItems]) -> [MovieViewModel] {
         return movies.map { [unowned self] movie in
             MovieViewModelBuilder.prepareViewModel(movie: movie, image: { poster in self.useCase.downloadImage(poster, size: .small) })
         }

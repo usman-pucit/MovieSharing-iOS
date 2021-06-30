@@ -29,3 +29,24 @@ struct Request{
         self.parameters = parameters
     }
 }
+
+extension Request{
+    static func movies() -> Request {
+        let url = Environment.BASE_URL.appendingPathComponent("search")
+        let parameters: [String : CustomStringConvertible] = [
+            "key": Environment.API_KEY,
+            "part": "snippet"
+            ]
+        return Request(url: url, parameters: parameters)
+    }
+    
+    static func searchMovies(_ query: String) -> Request {
+        let url = Environment.BASE_URL.appendingPathComponent("search")
+        let parameters: [String : CustomStringConvertible] = [
+            "key": Environment.API_KEY,
+            "part": "snippet",
+            "q": "\(query)"
+            ]
+        return Request(url: url, parameters: parameters)
+    }
+}
