@@ -17,6 +17,7 @@ class FavouritesViewController: UIViewController {
     private var viewModel: FavouritesViewModel!
     private var cancellable: [AnyCancellable] = []
     private lazy var datasource = DataManager.shared
+    private lazy var searchBar = UISearchBar(frame: .zero)
 
     // MARK: Lifecycle
 
@@ -33,6 +34,14 @@ class FavouritesViewController: UIViewController {
 
     private func configureUI() {
         title = "Favourites"
+
+        searchBar.placeholder = "Search"
+        searchBar.delegate = self
+        let micImage = UIImage(systemName: "mic.fill")
+        searchBar.setImage(micImage, for: .bookmark, state: .normal)
+        searchBar.showsBookmarkButton = true
+        navigationItem.titleView = searchBar
+
         tableView.tableFooterView = UIView()
         tableView.registerNib(cellClass: MovieListViewCell.self)
         tableView.registerNib(cellClass: MovieHeaderViewCell.self)
@@ -43,6 +52,19 @@ class FavouritesViewController: UIViewController {
 //        viewModel.stateDidUpdate.sink(receiveValue: { [unowned self] _ in
 //            // Todo ...
 //        }).store(in: &cancellable)
+    }
+    
+    @objc func cancelButtonTapped(){
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        navigationItem.rightBarButtonItem = nil
+    }
+}
+
+extension FavouritesViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let cancelSearchBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.setRightBarButton(cancelSearchBarButtonItem, animated: true)
     }
 }
 
