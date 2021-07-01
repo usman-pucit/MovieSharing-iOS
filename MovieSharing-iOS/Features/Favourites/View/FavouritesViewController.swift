@@ -16,8 +16,10 @@ class FavouritesViewController: UIViewController {
 
     private var viewModel: FavouritesViewModel!
     private var cancellable: [AnyCancellable] = []
-    private lazy var datasource = SharedDataManager.shared
+    private lazy var datasource = [MovieViewModel]()
+    private lazy var filteredDatasource = [MovieViewModel]()
     private lazy var searchBar = UISearchBar(frame: .zero)
+    private var isSearchBarActive = false
 
     // MARK: Lifecycle
 
@@ -35,6 +37,7 @@ class FavouritesViewController: UIViewController {
     private func configureUI() {
         title = "Favourites"
 
+        datasource = SharedDataManager.shared
         searchBar.placeholder = "Search"
         searchBar.delegate = self
         let micImage = UIImage(systemName: "mic.fill")
@@ -57,14 +60,39 @@ class FavouritesViewController: UIViewController {
     @objc func cancelButtonTapped() {
         searchBar.text = ""
         searchBar.endEditing(true)
+        isSearchBarActive = false
+        filteredDatasource.removeAll()
         navigationItem.rightBarButtonItem = nil
     }
 }
 
 extension FavouritesViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearchBarActive = true
         let cancelSearchBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         navigationItem.setRightBarButton(cancelSearchBarButtonItem, animated: true)
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearchBarActive = true
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearchBarActive = false
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isSearchBarActive = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearchBarActive = false
+        } else {
+            filteredDatasource = datasource.filter { $0.title.contains(searchText) }
+            isSearchBarActive = true
+        }
+        tableView.reloadData()
     }
 }
 
@@ -82,12 +110,20 @@ extension FavouritesViewController: UITableViewDelegate {
 
 extension FavouritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SharedDataManager.shared.count
+        if isSearchBarActive {
+            return filteredDatasource.count
+        } else {
+            return datasource.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: MovieListViewCell.self)
-        cell.configure(with: SharedDataManager.shared[indexPath.row])
+        if isSearchBarActive {
+            cell.configure(with: filteredDatasource[indexPath.row])
+        } else {
+            cell.configure(with: datasource[indexPath.row])
+        }
         return cell
     }
 
@@ -101,7 +137,10 @@ extension FavouritesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if SharedDataManager.shared.count == 0 {
+        if datasource.count == 0 {
+            return UIView()
+        }
+        if isSearchBarActive, filteredDatasource.count == 0 {
             return UIView()
         }
         let headerView = tableView.dequeueReusableCell(withClass: MovieHeaderViewCell.self)

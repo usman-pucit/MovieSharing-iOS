@@ -21,12 +21,13 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var imageThumbnail: UIImageView!
     @IBOutlet var cosmosView: CosmosView!
     @IBOutlet var labelRating: UILabel!
+    @IBOutlet var labeDecimalRating: UILabel!
     @IBOutlet var mainView: UIView!
     
     // MARK: Properties
 
     var movie: MovieViewModel!
-    private var activityIndicator : ActivityViewController = ActivityViewController.loadFromNib()
+    private var activityIndicator = ActivityViewController.loadFromNib()
     private var viewModel: MovieDetailsViewModel!
     private var cancellable: [AnyCancellable] = []
     
@@ -43,9 +44,16 @@ class MovieDetailsViewController: UIViewController {
     private func configureUI() {
         title = "Movie title"
         let randomInt = Int.random(in: 1 ... 5)
+        if randomInt == 5 {
+            labeDecimalRating.text = ".0"
+            labelRating.text = "\(randomInt)"
+        } else {
+            labeDecimalRating.text = ".\(Int.random(in: 1 ... 5))"
+            labelRating.text = "\(randomInt)"
+        }
         cosmosView.rating = Double(randomInt)
-        cosmosView.settings.starMargin = 10
-        labelRating.text = "\(randomInt)"
+        cosmosView.settings.starMargin = 12
+        cosmosView.settings.starSize = 20
         mainView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
         add(activityIndicator)
     }
