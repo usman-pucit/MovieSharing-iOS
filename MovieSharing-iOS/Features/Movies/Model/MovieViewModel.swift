@@ -6,8 +6,8 @@
 //
 
 import Combine
-import UIKit.UIImage
 import Foundation
+import UIKit.UIImage
 
 // Section
 struct MovieSectionViewModel {

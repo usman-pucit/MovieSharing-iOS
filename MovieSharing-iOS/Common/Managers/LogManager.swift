@@ -9,6 +9,8 @@ import Foundation
 
 let log = LogManager()
 
+// Logs manager for printing logs
+
 struct LogManager {
     func printLog(_ object: Any...) {
         print("\n******** 📍📍 START 📍📍 ********\n")

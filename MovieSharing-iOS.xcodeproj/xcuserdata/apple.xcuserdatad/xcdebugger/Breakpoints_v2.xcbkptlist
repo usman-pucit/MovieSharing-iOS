@@ -14,8 +14,8 @@
             filePath = "MovieSharing-iOS/Features/Details/View/MovieDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "bindViewModel()"
             landmarkType = "7">
          </BreakpointContent>

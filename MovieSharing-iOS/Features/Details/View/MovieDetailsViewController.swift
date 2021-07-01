@@ -3,22 +3,25 @@
 //  MovieSharing-iOS
 //
 //  Created by Muhammad Usman on 30/06/2021.
-//  
+//
 //
 
-import UIKit
 import Combine
+import Cosmos
 import Kingfisher
+import UIKit
 
 class MovieDetailsViewController: UIViewController {
-
     // MARK: IBOutlets
     
-    @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelGenres: UILabel!
-    @IBOutlet weak var labelDescription: UILabel!
-    @IBOutlet weak var imagePoster: UIImageView!
-    @IBOutlet weak var imageThumbnail: UIImageView!
+    @IBOutlet var labelTitle: UILabel!
+    @IBOutlet var labelGenres: UILabel!
+    @IBOutlet var labelDescription: UILabel!
+    @IBOutlet var imagePoster: UIImageView!
+    @IBOutlet var imageThumbnail: UIImageView!
+    @IBOutlet var cosmosView: CosmosView!
+    @IBOutlet var labelRating: UILabel!
+    @IBOutlet var mainView: UIView!
     
     // MARK: Properties
 
@@ -26,7 +29,6 @@ class MovieDetailsViewController: UIViewController {
     private var activityIndicator : ActivityViewController = ActivityViewController.loadFromNib()
     private var viewModel: MovieDetailsViewModel!
     private var cancellable: [AnyCancellable] = []
-    
     
     // MARK: Lifecycle
 
@@ -38,23 +40,28 @@ class MovieDetailsViewController: UIViewController {
         setupNavigationBarButton()
     }
     
-    private func configureUI(){
+    private func configureUI() {
         title = "Movie title"
+        let randomInt = Int.random(in: 1 ... 5)
+        cosmosView.rating = Double(randomInt)
+        cosmosView.settings.starMargin = 10
+        labelRating.text = "\(randomInt)"
+        mainView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
         add(activityIndicator)
     }
     
-    private func setupNavigationBarButton(){
+    private func setupNavigationBarButton() {
         var image: UIImage?
         var id = UUID().uuidString
         if let videoId = movie.videoId {
             id = videoId
-        }else if let playlistId = movie.playlistId{
+        } else if let playlistId = movie.playlistId {
             id = playlistId
         }
         
-        if DataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id}) {
+        if SharedDataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id }) {
             image = UIImage(systemName: "heart.fill")
-        }else{
+        } else {
             image = UIImage(systemName: "heart")
         }
         
@@ -62,12 +69,12 @@ class MovieDetailsViewController: UIViewController {
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        navigationItem.rightBarButtonItem = barButton
     }
     
     private func bindViewModel() {
         viewModel.stateDidUpdate.sink(receiveValue: { [weak self] state in
-            guard let `self` = self else{return}
+            guard let `self` = self else { return }
             self.handleResponse(state)
         }).store(in: &cancellable)
         
@@ -78,7 +85,7 @@ class MovieDetailsViewController: UIViewController {
         
         if let request = Request.movieDetails(movie.videoId, playlistId: movie.playlistId, channelId: movie.channelId) {
             viewModel.request(request)
-        }else{
+        } else {
             handleError("Inavlid request")
         }
     }
@@ -94,7 +101,7 @@ class MovieDetailsViewController: UIViewController {
         }
     }
     
-    private func render(details: MovieDetailViewModel){
+    private func render(details: MovieDetailViewModel) {
         labelTitle.text = details.title
         labelGenres.text = details.genre
         labelDescription.text = details.description
@@ -106,21 +113,17 @@ class MovieDetailsViewController: UIViewController {
         showAlert(with: "Error", message: message)
     }
     
-    
-    @objc func favouriteButtonTapped(_ sender: Any){
+    @objc func favouriteButtonTapped(_ sender: Any) {
         var id = UUID().uuidString
         if let videoId = movie.videoId {
             id = videoId
-        }else if let playlistId = movie.playlistId{
+        } else if let playlistId = movie.playlistId {
             id = playlistId
         }
         
-        if DataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id}) {
-            log.printLog("\n ## Object already there ..... ## \n")
-        }else{
-            DataManager.shared.append(self.movie)
+        if !SharedDataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id }) {
+            SharedDataManager.shared.append(movie)
             setupNavigationBarButton()
-            log.printLog("\n ## Object already added ## \n")
         }
     }
     
@@ -128,5 +131,4 @@ class MovieDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
         remove(activityIndicator)
     }
-    
 }

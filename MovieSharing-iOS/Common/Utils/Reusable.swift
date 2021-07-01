@@ -5,8 +5,8 @@
 //  Created by Muhammad Usman on 29/06/2021.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 protocol NibProvidable {
     static var nibName: String { get }
@@ -17,6 +17,7 @@ extension NibProvidable {
     static var nibName: String {
         return "\(self)"
     }
+
     static var nib: UINib {
         return UINib(nibName: self.nibName, bundle: nil)
     }
@@ -32,6 +33,5 @@ extension ReusableView {
     }
 }
 
-extension UITableViewCell: ReusableView, NibProvidable{}
-extension UICollectionViewCell: ReusableView, NibProvidable{}
-extension UITableViewHeaderFooterView: ReusableView, NibProvidable{}
+extension UITableViewCell: ReusableView, NibProvidable {}
+extension UICollectionViewCell: ReusableView, NibProvidable {}

@@ -8,6 +8,8 @@
 import UIKit
 
 class ActivityViewController: UIViewController {
+    // MARK: IBOutlets
+
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
 

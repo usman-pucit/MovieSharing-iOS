@@ -16,7 +16,7 @@ class FavouritesViewController: UIViewController {
 
     private var viewModel: FavouritesViewModel!
     private var cancellable: [AnyCancellable] = []
-    private lazy var datasource = DataManager.shared
+    private lazy var datasource = SharedDataManager.shared
     private lazy var searchBar = UISearchBar(frame: .zero)
 
     // MARK: Lifecycle
@@ -53,8 +53,8 @@ class FavouritesViewController: UIViewController {
 //            // Todo ...
 //        }).store(in: &cancellable)
     }
-    
-    @objc func cancelButtonTapped(){
+
+    @objc func cancelButtonTapped() {
         searchBar.text = ""
         searchBar.endEditing(true)
         navigationItem.rightBarButtonItem = nil
@@ -73,7 +73,7 @@ extension FavouritesViewController: UISearchBarDelegate {
 extension FavouritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = MovieDetailsViewController.instantiate(fromAppStoryboard: .Main)
-        viewController.movie = DataManager.shared[indexPath.row]
+        viewController.movie = SharedDataManager.shared[indexPath.row]
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -82,12 +82,12 @@ extension FavouritesViewController: UITableViewDelegate {
 
 extension FavouritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataManager.shared.count
+        return SharedDataManager.shared.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: MovieListViewCell.self)
-        cell.configure(with: DataManager.shared[indexPath.row])
+        cell.configure(with: SharedDataManager.shared[indexPath.row])
         return cell
     }
 
@@ -101,7 +101,7 @@ extension FavouritesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if DataManager.shared.count == 0 {
+        if SharedDataManager.shared.count == 0 {
             return UIView()
         }
         let headerView = tableView.dequeueReusableCell(withClass: MovieHeaderViewCell.self)

@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIViewController {
-    
     // MARK: - Property
     
     class var storyboardID: String {
@@ -62,7 +61,7 @@ extension UIViewController {
         child.didMove(toParent: self)
     }
 
-    // Removing child view controller 
+    // Removing child view controller
     public func remove(_ child: UIViewController) {
         guard child.parent != nil else {
             return

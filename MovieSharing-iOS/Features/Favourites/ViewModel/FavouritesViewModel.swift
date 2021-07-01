@@ -13,7 +13,7 @@ protocol FavouritesViewModelType {}
 
 /// define all states of view.
 enum FavouritesViewModelState {
-    case show([FavouritesModel])
+    case show(Any)
     case error(String)
 }
 

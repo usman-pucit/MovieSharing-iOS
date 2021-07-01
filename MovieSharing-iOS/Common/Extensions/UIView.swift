@@ -17,12 +17,11 @@ extension UIView {
 
         let backgroundCGColor = backgroundColor?.cgColor
         backgroundColor = nil
-        layer.backgroundColor =  backgroundCGColor
+        layer.backgroundColor = backgroundCGColor
     }
 }
 
 extension UIView {
-
     @IBInspectable
     var cornerRadius: CGFloat {
         get {

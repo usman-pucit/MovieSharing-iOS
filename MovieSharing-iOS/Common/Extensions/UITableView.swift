@@ -16,20 +16,8 @@ extension UITableView {
     func registerNib<T: UITableViewCell>(cellClass `class`: T.Type){
         register(`class`.nib, forCellReuseIdentifier: `class`.reuseIdentifier)
     }
-    
-    func registerHeaderNib<T: UITableViewHeaderFooterView>(cellClass `class`: T.Type){
-        register(`class`.nib, forCellReuseIdentifier: `class`.reuseIdentifier)
-    }
-
     func dequeueReusableCell<T: UITableViewCell>(withClass `class`: T.Type) -> T {
         guard let cell = self.dequeueReusableCell(withIdentifier: `class`.reuseIdentifier) as? T else{
-            fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
-        }
-        return cell
-    }
-    
-    func dequeueReusableHeaderView<T: UITableViewHeaderFooterView>(withClass `class`: T.Type) -> T {
-        guard let cell = self.dequeueReusableHeaderFooterView(withIdentifier: `class`.reuseIdentifier) as? T else{
             fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
         }
         return cell

@@ -3,17 +3,17 @@
 //  MovieSharing-iOS
 //
 //  Created by Muhammad Usman on 29/06/2021.
-//  
+//
 //
 
-import UIKit
 import Combine
+import UIKit
 
-enum TableViewState{
+enum TableViewState {
     case grid
     case list
     
-    var headerTitle: String?{
+    var headerTitle: String? {
         switch self {
         case .grid:
             return nil
@@ -22,7 +22,7 @@ enum TableViewState{
         }
     }
     
-    var headerHeight: CGFloat{
+    var headerHeight: CGFloat {
         switch self {
         case .grid:
             return 0.0
@@ -31,7 +31,7 @@ enum TableViewState{
         }
     }
     
-    var cellHeight: CGFloat{
+    var cellHeight: CGFloat {
         switch self {
         case .grid:
             return 350
@@ -42,23 +42,22 @@ enum TableViewState{
 }
 
 class MoviesViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     
     // MARK: Properties
 
     private var viewModel: MoviesViewModel!
     private var cancellable: [AnyCancellable] = []
-    private lazy var activityViewController: ActivityViewController = ActivityViewController.loadFromNib()
+    private lazy var activityViewController : ActivityViewController = ActivityViewController.loadFromNib()
     private var listState: TableViewState = .grid
-    private lazy var gridDataSource: [MovieSectionViewModel] = []{
-        didSet{
+    private lazy var gridDataSource: [MovieSectionViewModel] = [] {
+        didSet {
             tableView.reloadData()
         }
     }
     
-    private lazy var listDataSource: [MovieViewModel] = []{
-        didSet{
+    private lazy var listDataSource: [MovieViewModel] = [] {
+        didSet {
             tableView.reloadData()
         }
     }
@@ -72,7 +71,7 @@ class MoviesViewController: UIViewController {
         bindViewModel()
     }
     
-    private func configureUI(){
+    private func configureUI() {
         title = "Movies"
         tableView.tableFooterView = UIView()
         tableView.registerNib(cellClass: MovieHeaderViewCell.self)
@@ -83,12 +82,12 @@ class MoviesViewController: UIViewController {
     
     private func bindViewModel() {
         viewModel.stateDidUpdate.sink(receiveValue: { [weak self] state in
-            guard let `self` = self else {return}
+            guard let `self` = self else { return }
             self.handleResponse(state)
         }).store(in: &cancellable)
         
         viewModel.$isLoading.sink(receiveValue: { [weak self] isLoading in
-            guard let `self` = self else {return}
+            guard let `self` = self else { return }
             self.activityViewController.view.isHidden = !isLoading
         }).store(in: &cancellable)
         
@@ -111,21 +110,21 @@ class MoviesViewController: UIViewController {
     }
     
     @IBAction func didChangeSegmentControl(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
+        if sender.selectedSegmentIndex == 0 {
             tableView.allowsSelection = false
             listState = .grid
             gridDataSource = viewModel.prepareGridDatasource()
-        }else{
+        } else {
             tableView.allowsSelection = true
             listState = .list
             listDataSource = viewModel.prepareListDatasource()
         }
     }
     
-    private func didSelectMovie(movie: MovieViewModel){
+    private func didSelectMovie(movie: MovieViewModel) {
         let viewController = MovieDetailsViewController.instantiate(fromAppStoryboard: .Main)
         viewController.movie = movie
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,7 +133,7 @@ class MoviesViewController: UIViewController {
     }
 }
 
-extension MoviesViewController: ItemSelected{
+extension MoviesViewController: ItemSelected {
     func didItemGetSelected(movie: MovieViewModel) {
         didSelectMovie(movie: movie)
     }
@@ -142,7 +141,7 @@ extension MoviesViewController: ItemSelected{
 
 // MARK: - UITableViewDelegate
 
-extension MoviesViewController: UITableViewDelegate{
+extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if listState == .list {
             didSelectMovie(movie: listDataSource[indexPath.row])
@@ -152,12 +151,11 @@ extension MoviesViewController: UITableViewDelegate{
 
 // MARK: - UITableViewDatasource
 
-extension MoviesViewController: UITableViewDataSource{
-    
+extension MoviesViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if listState == .grid {
             return gridDataSource.count
-        }else{
+        } else {
             return 1
         }
     }
@@ -165,7 +163,7 @@ extension MoviesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if listState == .grid {
             return 1
-        }else{
+        } else {
             return listDataSource.count
         }
     }
@@ -176,20 +174,19 @@ extension MoviesViewController: UITableViewDataSource{
             cell.delegate = self
             cell.configure(with: gridDataSource[indexPath.section].viewModels)
             return cell
-        }else{
+        } else {
             let cell = tableView.dequeueReusableCell(withClass: MovieListViewCell.self)
             cell.configure(with: listDataSource[indexPath.row])
             return cell
         }
-        
     }
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if listState == .grid {
             return listState.cellHeight
-        }else{
-            let stringHeight = listDataSource[indexPath.row].title.height(constraintedWidth: tableView.frame.size.width-50, font: UIFont.systemFont(ofSize: 17))
-            return listState.cellHeight+stringHeight
+        } else {
+            let stringHeight = listDataSource[indexPath.row].title.height(constraintedWidth: tableView.frame.size.width - 50, font: UIFont.systemFont(ofSize: 17))
+            return listState.cellHeight + stringHeight
         }
     }
 
@@ -198,7 +195,7 @@ extension MoviesViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if listDataSource.count == 0 && gridDataSource.count == 0 {
+        if listDataSource.count == 0, gridDataSource.count == 0 {
             return UIView()
         }
         let headerView = tableView.dequeueReusableCell(withClass: MovieHeaderViewCell.self)

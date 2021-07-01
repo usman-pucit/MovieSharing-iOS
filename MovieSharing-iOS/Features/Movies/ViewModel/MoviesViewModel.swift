@@ -31,6 +31,7 @@ class MoviesViewModel {
     private let useCase: MoviesUseCaseType
     private let stateDidUpdateSubject = PassthroughSubject<MoviesViewModelState, Never>()
     private var movieItems = [MovieItems]()
+
     // MARK: Initializer
 
     init(useCase: MoviesUseCaseType) {

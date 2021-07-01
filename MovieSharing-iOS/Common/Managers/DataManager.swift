@@ -7,6 +7,7 @@
 
 import Foundation
 
-class DataManager {
+// Shared data manager
+class SharedDataManager {
     static var shared = [MovieViewModel]()
 }
