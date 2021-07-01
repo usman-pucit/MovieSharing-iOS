@@ -48,9 +48,10 @@ class MovieDetailsViewController: UIViewController {
     // MARK: Fuction
     private func configureUI() {
         title = movie.channelTitle
-        labelRating.text = "\(viewModel.makeRating().leftPart)"
-        labeDecimalRating.text = ".\(viewModel.makeRating().rightPart)"
-        cosmosView.rating = viewModel.makeRating().rating
+        let rating = viewModel.makeRating()
+        labelRating.text = "\(rating.leftPart)"
+        labeDecimalRating.text = ".\(rating.rightPart)"
+        cosmosView.rating = rating.rating
         cosmosView.settings.starMargin = 10
         cosmosView.settings.starSize = 14
         cosmosView.settings.fillMode = .full
