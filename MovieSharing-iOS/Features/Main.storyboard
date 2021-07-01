@@ -694,7 +694,7 @@
         <scene sceneID="CqW-Zc-vGM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Ds-Ef-cts" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Movies" image="tv" catalog="system" selectedImage="tv.fill" id="SUu-Yy-3ty"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="movie_disabled" selectedImage="movie_light" id="SUu-Yy-3ty"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hEg-Y4-uU8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -713,7 +713,7 @@
         <scene sceneID="h3o-ue-CiJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cbv-eF-eX1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" image="heart" catalog="system" selectedImage="heart.fill" id="Sdg-Qf-Pdb"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="favorites_disabled" selectedImage="favorites_light" id="Sdg-Qf-Pdb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="exY-RH-1dF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -732,7 +732,7 @@
         <scene sceneID="TuQ-6o-ypf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qwj-kd-TXn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="1Cx-Il-jFf"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings_disabled" selectedImage="settings_light" id="1Cx-Il-jFf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mzm-Sk-ELQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -928,7 +928,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QTs-Vp-AZ1">
-                        <barButtonItem key="rightBarButtonItem" image="heart.fill" catalog="system" id="ssS-B0-qdE">
+                        <barButtonItem key="rightBarButtonItem" id="ssS-B0-qdE">
                             <connections>
                                 <action selector="favouriteButtonTapped:" destination="w3U-YK-w22" id="SrI-vI-YEV"/>
                             </connections>
@@ -971,14 +971,14 @@
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="favorites_disabled" width="48" height="32"/>
+        <image name="favorites_light" width="48" height="32"/>
         <image name="filled_star" width="16" height="16"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="movie_disabled" width="48" height="32"/>
+        <image name="movie_light" width="48" height="32"/>
         <image name="placeholder_image" width="1500" height="1500"/>
-        <image name="tv" catalog="system" width="128" height="97"/>
-        <image name="tv.fill" catalog="system" width="128" height="97"/>
+        <image name="settings_disabled" width="48" height="32"/>
+        <image name="settings_light" width="48" height="32"/>
         <image name="unfilled_star" width="16" height="16"/>
         <namedColor name="profile_color">
             <color red="0.77999997138977051" green="0.77999997138977051" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

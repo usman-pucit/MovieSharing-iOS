@@ -22,30 +22,13 @@ struct High: Codable {
 
 struct Id: Codable {
     let kind: String?
-    let videoId: String?
-    let playlistId: String?
-    let channelId: String?
-
-    enum CodingKeys: String, CodingKey {
-        case playlistId
-        case kind
-        case videoId
-        case channelId
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        kind = try values.decodeIfPresent(String.self, forKey: .kind)
-        videoId = try values.decodeIfPresent(String.self, forKey: .videoId)
-        playlistId = try values.decodeIfPresent(String.self, forKey: .playlistId)
-        channelId = try values.decodeIfPresent(String.self, forKey: .channelId)
-    }
+    let videoId: String
 }
 
 struct MovieItems: Codable {
     let kind: String?
     let etag: String?
-    let id: Id?
+    let id: Id
     let snippet: Snippet
 }
 

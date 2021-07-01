@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-struct Request{
+struct Request {
     let url: URL
     let parameters: [String: CustomStringConvertible]
     var request: URLRequest? {
@@ -30,46 +30,26 @@ struct Request{
     }
 }
 
-extension Request{
+extension Request {
     static func movies() -> Request {
         let url = Environment.BASE_URL.appendingPathComponent("search")
-        let parameters: [String : CustomStringConvertible] = [
+        let parameters: [String: CustomStringConvertible] = [
             "key": Environment.API_KEY,
             "part": "snippet",
             "type": "video",
             "videoCategoryId": "17",
             "maxResults": "30"
-            ]
+        ]
         return Request(url: url, parameters: parameters)
     }
-    
-    static func movieDetails(_ videoId: String?, playlistId: String?, channelId: String?) -> Request?{
-        if let videoId = videoId {
-            let url = Environment.BASE_URL.appendingPathComponent("videos")
-            let parameters: [String : CustomStringConvertible] = [
-                "key": Environment.API_KEY,
-                "part": "snippet",
-                "id": "\(videoId)"
-                ]
-            return Request(url: url, parameters: parameters)
-        }else if let playlistId = playlistId{
-            let url = Environment.BASE_URL.appendingPathComponent("playlists")
-            let parameters: [String : CustomStringConvertible] = [
-                "key": Environment.API_KEY,
-                "part": "snippet",
-                "id": "\(playlistId)"
-                ]
-            return Request(url: url, parameters: parameters)
-        }else if let channelId = channelId {
-            let url = Environment.BASE_URL.appendingPathComponent("channels")
-            let parameters: [String : CustomStringConvertible] = [
-                "key": Environment.API_KEY,
-                "part": "snippet",
-                "id": "\(channelId)"
-                ]
-            return Request(url: url, parameters: parameters)
-        }else{
-            return nil
-        }
+
+    static func movieDetails(_ videoId: String) -> Request {
+        let url = Environment.BASE_URL.appendingPathComponent("videos")
+        let parameters: [String: CustomStringConvertible] = [
+            "key": Environment.API_KEY,
+            "part": "snippet",
+            "id": "\(videoId)"
+        ]
+        return Request(url: url, parameters: parameters)
     }
 }

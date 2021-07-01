@@ -73,7 +73,7 @@ extension UIViewController {
     }
     
     // Loading Xib
-    class func loadFromNib<T: UIViewController>() -> T {
-        return T(nibName: String(describing: self), bundle: nil)
+    class func loadFromNib() -> ActivityViewController{
+        return ActivityViewController(nibName: String(describing: self), bundle: nil)
     }
 }

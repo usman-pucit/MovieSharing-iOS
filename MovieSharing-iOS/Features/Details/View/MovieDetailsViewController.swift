@@ -38,39 +38,33 @@ class MovieDetailsViewController: UIViewController {
         viewModel = MovieDetailsViewModel(useCase: MoviesUseCase())
         configureUI()
         bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupNavigationBarButton()
     }
     
     private func configureUI() {
         title = "Movie title"
-        let randomInt = Int.random(in: 1 ... 5)
-        if randomInt == 5 {
-            labeDecimalRating.text = ".0"
-            labelRating.text = "\(randomInt)"
-        } else {
-            labeDecimalRating.text = ".\(Int.random(in: 1 ... 5))"
-            labelRating.text = "\(randomInt)"
-        }
-        cosmosView.rating = Double(randomInt)
+        labelRating.text = "\(viewModel.makeRating().leftPart)"
+        labeDecimalRating.text = ".\(viewModel.makeRating().rightPart)"
+        cosmosView.rating = viewModel.makeRating().rating
         cosmosView.settings.starMargin = 12
         cosmosView.settings.starSize = 20
-        mainView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
+        cosmosView.settings.fillMode = .full
         add(activityIndicator)
+        activityIndicator.setTitle(title: "Loading details")
     }
     
     private func setupNavigationBarButton() {
         var image: UIImage?
-        var id = UUID().uuidString
-        if let videoId = movie.videoId {
-            id = videoId
-        } else if let playlistId = movie.playlistId {
-            id = playlistId
-        }
+        let id = movie.videoId
         
-        if SharedDataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id }) {
-            image = UIImage(systemName: "heart.fill")
+        if SharedDataManager.shared.contains(where: { movie in movie.videoId == id }) {
+            image = UIImage(named: "favorites_light")
         } else {
-            image = UIImage(systemName: "heart")
+            image = UIImage(named: "favorites_disabled")
         }
         
         let button = UIButton(type: UIButton.ButtonType.custom)
@@ -86,16 +80,11 @@ class MovieDetailsViewController: UIViewController {
             self.handleResponse(state)
         }).store(in: &cancellable)
         
-        activityIndicator.setTitle(title: "Loading details")
         viewModel.$isLoading.sink(receiveValue: { isLoading in
             self.activityIndicator.view.isHidden = !isLoading
         }).store(in: &cancellable)
         
-        if let request = Request.movieDetails(movie.videoId, playlistId: movie.playlistId, channelId: movie.channelId) {
-            viewModel.request(request)
-        } else {
-            handleError("Inavlid request")
-        }
+        viewModel.request(Request.movieDetails(movie.videoId))
     }
     
     private func handleResponse(_ result: MovieDetailsViewModelState) {
@@ -122,14 +111,14 @@ class MovieDetailsViewController: UIViewController {
     }
     
     @objc func favouriteButtonTapped(_ sender: Any) {
-        var id = UUID().uuidString
-        if let videoId = movie.videoId {
-            id = videoId
-        } else if let playlistId = movie.playlistId {
-            id = playlistId
-        }
+        var id = movie.videoId
         
-        if !SharedDataManager.shared.contains(where: { movie in movie.videoId == id || movie.playlistId == id }) {
+        if SharedDataManager.shared.contains(where: { movie in movie.videoId == id }) {
+            if let index = SharedDataManager.shared.firstIndex(where: { $0.videoId == id }) {
+                SharedDataManager.shared.remove(at: index)
+            }
+            setupNavigationBarButton()
+        } else {
             SharedDataManager.shared.append(movie)
             setupNavigationBarButton()
         }

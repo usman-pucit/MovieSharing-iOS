@@ -11,6 +11,7 @@ import Foundation
 
 protocol MovieDetailsViewModelType {
     func request(_ request: Request)
+    func makeRating()->(leftPart: Int, rightPart: Int, rating: Double)
 }
 
 /// define all states of view.
@@ -61,6 +62,12 @@ extension MovieDetailsViewModel: MovieDetailsViewModelType {
             }.store(in: &cancellables)
     }
 
+    func makeRating()->(leftPart: Int, rightPart: Int, rating: Double){
+        let randomNumber = Double.random(in: 1.0...5.0)
+        let randomNumbers = randomNumber.splitIntoParts(decimalPlaces: 2)
+        return (leftPart: randomNumbers.leftPart, rightPart: randomNumbers.rightPart, rating: randomNumber)
+    }
+    
     private func prepareViewModel(movie: DetailItems) -> MovieDetailViewModel {
         return MovieDetailViewModelBuilder.prepareViewModel(movie: movie)
     }

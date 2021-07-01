@@ -71,6 +71,10 @@ class MoviesViewController: UIViewController {
         bindViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     private func configureUI() {
         title = "Movies"
         tableView.tableFooterView = UIView()
@@ -89,6 +93,8 @@ class MoviesViewController: UIViewController {
         viewModel.$isLoading.sink(receiveValue: { [weak self] isLoading in
             guard let `self` = self else { return }
             self.activityViewController.view.isHidden = !isLoading
+            self.tabBarController?.tabBar.isHidden = isLoading
+//            self.navigationController?.navigationBar.isHidden = isLoading
         }).store(in: &cancellable)
         
         viewModel.request(Request.movies())
