@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,15 +22,15 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="wx3-Im-10r">
-                    <rect key="frame" x="151.5" y="419.5" width="111.5" height="67"/>
+                    <rect key="frame" x="154.5" y="420" width="105" height="66"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="tJ3-ES-Vwb">
-                            <rect key="frame" x="37" y="0.0" width="37" height="37"/>
-                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="34" y="0.0" width="37" height="37"/>
+                            <color key="color" name="loader_color"/>
                         </activityIndicatorView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6x-lU-mYV">
-                            <rect key="frame" x="0.0" y="49" width="111.5" height="18"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <rect key="frame" x="0.0" y="49" width="105" height="17"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -40,14 +41,15 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="wx3-Im-10r" firstAttribute="centerX" secondItem="ZLf-cA-8vO" secondAttribute="centerX" id="6rO-dR-dc8"/>
-                <constraint firstItem="wx3-Im-10r" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZLf-cA-8vO" secondAttribute="leading" constant="8" id="VzF-HQ-vjA"/>
-                <constraint firstItem="ZLf-cA-8vO" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wx3-Im-10r" secondAttribute="trailing" constant="8" id="rCX-yI-3JK"/>
                 <constraint firstItem="wx3-Im-10r" firstAttribute="centerY" secondItem="ZLf-cA-8vO" secondAttribute="centerY" id="uRO-cW-J9B"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="111.5"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="loader_color">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -35,6 +35,7 @@
 		1870D0B6268D0E7F005D3BB6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D0B5268D0E7F005D3BB6 /* DataManager.swift */; };
 		1870D0B8268D1783005D3BB6 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D0B7268D1783005D3BB6 /* LogManager.swift */; };
 		1870D0BC268D1901005D3BB6 /* MovieListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1870D0BB268D1901005D3BB6 /* MovieListViewCell.xib */; };
+		1870D0BF268D4E9E005D3BB6 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1870D0BE268D4E9E005D3BB6 /* Cosmos */; };
 		18CCD525268B05AB0075C184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD524268B05AB0075C184 /* AppDelegate.swift */; };
 		18CCD527268B05AB0075C184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD526268B05AB0075C184 /* SceneDelegate.swift */; };
 		18CCD52E268B05AB0075C184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CCD52D268B05AB0075C184 /* Assets.xcassets */; };
@@ -145,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1870D0BF268D4E9E005D3BB6 /* Cosmos in Frameworks */,
 				1870D074268CD037005D3BB6 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +530,7 @@
 			name = "MovieSharing-iOS";
 			packageProductDependencies = (
 				1870D073268CD037005D3BB6 /* Kingfisher */,
+				1870D0BE268D4E9E005D3BB6 /* Cosmos */,
 			);
 			productName = "MovieSharing-iOS";
 			productReference = 18CCD521268B05AB0075C184 /* MovieSharing-iOS.app */;
@@ -602,6 +605,7 @@
 			mainGroup = 18CCD518268B05AB0075C184;
 			packageReferences = (
 				1870D072268CD037005D3BB6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1870D0BD268D4E9E005D3BB6 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 18CCD522268B05AB0075C184 /* Products */;
 			projectDirPath = "";
@@ -1029,6 +1033,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		1870D0BD268D4E9E005D3BB6 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1036,6 +1048,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1870D072268CD037005D3BB6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		1870D0BE268D4E9E005D3BB6 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1870D0BD268D4E9E005D3BB6 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
