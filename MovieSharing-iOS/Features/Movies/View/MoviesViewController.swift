@@ -76,7 +76,10 @@ class MoviesViewController: UIViewController {
             guard let `self` = self else { return }
             self.activityViewController.view.isHidden = !isLoading
             self.tabBarController?.tabBar.isHidden = isLoading
-//            self.navigationController?.navigationBar.isHidden = isLoading
+            self.navigationController?.navigationBar.isHidden = isLoading
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            self.view.setNeedsDisplay()
         }).store(in: &cancellable)
         
         viewModel.request(Request.movies())
