@@ -34,6 +34,7 @@
 		1870D0B8268D1783005D3BB6 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870D0B7268D1783005D3BB6 /* LogManager.swift */; };
 		1870D0BC268D1901005D3BB6 /* MovieListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1870D0BB268D1901005D3BB6 /* MovieListViewCell.xib */; };
 		1870D0BF268D4E9E005D3BB6 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1870D0BE268D4E9E005D3BB6 /* Cosmos */; };
+		1870D0C9268D5DD0005D3BB6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1870D0C8268D5DD0005D3BB6 /* README.md */; };
 		18CCD525268B05AB0075C184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD524268B05AB0075C184 /* AppDelegate.swift */; };
 		18CCD527268B05AB0075C184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCD526268B05AB0075C184 /* SceneDelegate.swift */; };
 		18CCD52E268B05AB0075C184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CCD52D268B05AB0075C184 /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		1870D0B5268D0E7F005D3BB6 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1870D0B7268D1783005D3BB6 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		1870D0BB268D1901005D3BB6 /* MovieListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieListViewCell.xib; sourceTree = "<group>"; };
+		1870D0C8268D5DD0005D3BB6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18CCD521268B05AB0075C184 /* MovieSharing-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieSharing-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CCD524268B05AB0075C184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CCD526268B05AB0075C184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		18CCD518268B05AB0075C184 = {
 			isa = PBXGroup;
 			children = (
+				1870D0C8268D5DD0005D3BB6 /* README.md */,
 				18CCD523268B05AB0075C184 /* MovieSharing-iOS */,
 				18CCD53A268B05AB0075C184 /* MovieSharing-iOSTests */,
 				18CCD545268B05AC0075C184 /* MovieSharing-iOSUITests */,
@@ -601,6 +604,7 @@
 				1819B63C268BCE5A001CFD14 /* MovieHeaderViewCell.xib in Resources */,
 				18CCD52E268B05AB0075C184 /* Assets.xcassets in Resources */,
 				181E64F7268C26F1002BC2DB /* ActivityViewController.xib in Resources */,
+				1870D0C9268D5DD0005D3BB6 /* README.md in Resources */,
 				181E64FF268C7B3C002BC2DB /* General.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
