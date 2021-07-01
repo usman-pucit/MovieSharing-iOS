@@ -31,13 +31,13 @@ class FavouritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI()
-        bindViewModel()
     }
 
     private func configureUI() {
         title = "Favourites"
-
+        isSearchBarActive = false
         datasource = SharedDataManager.shared
+        filteredDatasource = datasource
         searchBar.placeholder = "Search"
         searchBar.delegate = self
         let micImage = UIImage(systemName: "mic.fill")
@@ -51,12 +51,6 @@ class FavouritesViewController: UIViewController {
         tableView.reloadData()
     }
 
-    private func bindViewModel() {
-//        viewModel.stateDidUpdate.sink(receiveValue: { [unowned self] _ in
-//            // Todo ...
-//        }).store(in: &cancellable)
-    }
-
     @objc func cancelButtonTapped() {
         searchBar.text = ""
         searchBar.endEditing(true)
@@ -64,11 +58,21 @@ class FavouritesViewController: UIViewController {
         filteredDatasource.removeAll()
         navigationItem.rightBarButtonItem = nil
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cancelButtonTapped()
+    }
 }
 
 extension FavouritesViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearchBarActive = true
+        if let isEmpty = searchBar.text?.isEmpty, isEmpty{
+            isSearchBarActive = false
+        }else{
+            isSearchBarActive = true
+        }
+        
         let cancelSearchBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
         navigationItem.setRightBarButton(cancelSearchBarButtonItem, animated: true)
     }
@@ -100,9 +104,13 @@ extension FavouritesViewController: UISearchBarDelegate {
 
 extension FavouritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = MovieDetailsViewController.instantiate(fromAppStoryboard: .Main)
-        viewController.movie = SharedDataManager.shared[indexPath.row]
-        navigationController?.pushViewController(viewController, animated: true)
+       let coordinator = MoviesCoordinator(navigationController: navigationController)
+        if isSearchBarActive {
+            coordinator.start(filteredDatasource[indexPath.row])
+        } else {
+            coordinator.start(datasource[indexPath.row])
+        }
+        
     }
 }
 

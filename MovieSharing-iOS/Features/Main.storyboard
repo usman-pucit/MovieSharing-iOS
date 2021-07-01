@@ -194,7 +194,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="pWt-W1-vUL">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="WcR-7m-3VN" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="WcR-7m-3VN" customClass="TabBarController" customModule="MovieSharing_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XBd-4G-wVf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

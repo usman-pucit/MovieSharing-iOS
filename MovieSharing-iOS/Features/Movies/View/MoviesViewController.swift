@@ -48,7 +48,7 @@ class MoviesViewController: UIViewController {
 
     private var viewModel: MoviesViewModel!
     private var cancellable: [AnyCancellable] = []
-    private lazy var activityViewController : ActivityViewController = ActivityViewController.loadFromNib()
+    private lazy var activityViewController = ActivityViewController.loadFromNib()
     private var listState: TableViewState = .grid
     private lazy var gridDataSource: [MovieSectionViewModel] = [] {
         didSet {
@@ -127,12 +127,6 @@ class MoviesViewController: UIViewController {
         }
     }
     
-    private func didSelectMovie(movie: MovieViewModel) {
-        let viewController = MovieDetailsViewController.instantiate(fromAppStoryboard: .Main)
-        viewController.movie = movie
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         remove(activityViewController)
@@ -141,7 +135,8 @@ class MoviesViewController: UIViewController {
 
 extension MoviesViewController: ItemSelected {
     func didItemGetSelected(movie: MovieViewModel) {
-        didSelectMovie(movie: movie)
+        let coordinator = MoviesCoordinator(navigationController: navigationController)
+        coordinator.start(movie)
     }
 }
 
@@ -150,7 +145,7 @@ extension MoviesViewController: ItemSelected {
 extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if listState == .list {
-            didSelectMovie(movie: listDataSource[indexPath.row])
+            didItemGetSelected(movie: listDataSource[indexPath.row])
         }
     }
 }
