@@ -18,5 +18,6 @@ struct MovieSectionViewModel {
 struct MovieViewModel {
     let videoId: String
     let title: String
+    let channelTitle: String
     let imagePoster: URL
 }

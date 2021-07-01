@@ -45,8 +45,9 @@ class MovieDetailsViewController: UIViewController {
         setupNavigationBarButton()
     }
     
+    // MARK: Fuction
     private func configureUI() {
-        title = Constants.Details.title
+        title = movie.channelTitle
         labelRating.text = "\(viewModel.makeRating().leftPart)"
         labeDecimalRating.text = ".\(viewModel.makeRating().rightPart)"
         cosmosView.rating = viewModel.makeRating().rating
@@ -57,6 +58,7 @@ class MovieDetailsViewController: UIViewController {
         activityIndicator.setTitle(title: Constants.Details.loadingMessage)
     }
     
+    //Function setup navigation bar
     private func setupNavigationBarButton() {
         var image: UIImage?
         let id = movie.videoId
@@ -117,11 +119,10 @@ class MovieDetailsViewController: UIViewController {
             if let index = SharedDataManager.shared.firstIndex(where: { $0.videoId == id }) {
                 SharedDataManager.shared.remove(at: index)
             }
-            setupNavigationBarButton()
         } else {
             SharedDataManager.shared.append(movie)
-            setupNavigationBarButton()
         }
+        setupNavigationBarButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
