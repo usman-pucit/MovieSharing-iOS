@@ -3,19 +3,30 @@
 //  MovieSharing-iOS
 //
 //  Created by Muhammad Usman on 29/06/2021.
-//  
+//
 //
 
-import UIKit
 import Combine
+import UIKit
 
 class SettingsViewController: UIViewController {
+    // MARK: IBOutlet
 
+    @IBOutlet var tableView: UITableView!
+    
     // MARK: Properties
 
+    private var datasource = ["EmptyCell",
+                              "ProfileCell",
+                              "AppleIdCell",
+                              "EmptyCell",
+                              "SwitchCell",
+                              "ConnectedCell",
+                              "OnCell",
+                              "SimpleCell",
+                              "OffCell"]
     private var viewModel: SettingsViewModel!
     private var cancellable: [AnyCancellable] = []
-    
     
     // MARK: Lifecycle
 
@@ -23,16 +34,23 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         viewModel = SettingsViewModel()
         configureUI()
-        bindViewModel()
     }
     
-    private func configureUI(){
+    private func configureUI() {
         title = "Settings"
+        tableView.tableFooterView = UIView()
+        tableView.reloadData()
+    }
+
+}
+
+extension SettingsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datasource.count
     }
     
-    private func bindViewModel() {
-        viewModel.stateDidUpdate.sink(receiveValue: { [unowned self] state in
-            // Todo ...
-        }).store(in: &cancellable)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: datasource[indexPath.row]) else { return UITableViewCell() }
+        return cell
     }
 }

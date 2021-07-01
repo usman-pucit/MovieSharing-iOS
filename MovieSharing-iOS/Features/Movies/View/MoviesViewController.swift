@@ -198,6 +198,9 @@ extension MoviesViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if listDataSource.count == 0 && gridDataSource.count == 0 {
+            return UIView()
+        }
         let headerView = tableView.dequeueReusableCell(withClass: MovieHeaderViewCell.self)
         headerView.configure("Category")
         return headerView
