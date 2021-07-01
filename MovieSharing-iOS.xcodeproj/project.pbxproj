@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1819B614268B8098001CFD14 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819B609268B8098001CFD14 /* SettingsViewController.swift */; };
-		1819B630268B8120001CFD14 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819B623268B8120001CFD14 /* FavouritesViewModel.swift */; };
 		1819B638268B8120001CFD14 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819B62E268B8120001CFD14 /* FavouritesViewController.swift */; };
 		1819B63A268BC8EA001CFD14 /* MovieListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819B639268BC8EA001CFD14 /* MovieListViewCell.swift */; };
 		1819B63C268BCE5A001CFD14 /* MovieHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1819B63B268BCE5A001CFD14 /* MovieHeaderViewCell.xib */; };
@@ -84,7 +83,6 @@
 
 /* Begin PBXFileReference section */
 		1819B609268B8098001CFD14 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		1819B623268B8120001CFD14 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		1819B62E268B8120001CFD14 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		1819B639268BC8EA001CFD14 /* MovieListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewCell.swift; sourceTree = "<group>"; };
 		1819B63B268BCE5A001CFD14 /* MovieHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				1819B62C268B8120001CFD14 /* View */,
-				1819B622268B8120001CFD14 /* ViewModel */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -195,14 +192,6 @@
 				1819B609268B8098001CFD14 /* SettingsViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		1819B622268B8120001CFD14 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				1819B623268B8120001CFD14 /* FavouritesViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1819B62C268B8120001CFD14 /* View */ = {
@@ -383,9 +372,9 @@
 		18CCD556268B05E40075C184 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				18CCD587268B08020075C184 /* Main.storyboard */,
 				184C37C7268DE90E0091B58B /* TabBar */,
 				1870D075268CD768005D3BB6 /* Details */,
-				18CCD587268B08020075C184 /* Main.storyboard */,
 				1819B5F2268B804D001CFD14 /* Settings */,
 				1819B5F1268B8041001CFD14 /* Favourites */,
 				18CCD562268B07BE0075C184 /* Movies */,
@@ -680,7 +669,6 @@
 				1870D0B8268D1783005D3BB6 /* LogManager.swift in Sources */,
 				1870D09D268CDBE9005D3BB6 /* MovieDetailViewModelBuilder.swift in Sources */,
 				18CCD590268B08020075C184 /* MoviesViewModel.swift in Sources */,
-				1819B630268B8120001CFD14 /* FavouritesViewModel.swift in Sources */,
 				1819B640268BD79A001CFD14 /* UIView.swift in Sources */,
 				1870D099268CD791005D3BB6 /* MovieDetailsViewController.swift in Sources */,
 				1870D0B0268CFBE4005D3BB6 /* MovieDetailsResponseModel.swift in Sources */,
@@ -884,6 +872,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QM2ZXR6S6G;
 				INFOPLIST_FILE = "MovieSharing-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -903,6 +892,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QM2ZXR6S6G;
 				INFOPLIST_FILE = "MovieSharing-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

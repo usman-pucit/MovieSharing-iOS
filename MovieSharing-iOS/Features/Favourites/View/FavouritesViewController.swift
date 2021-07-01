@@ -10,12 +10,12 @@ import Combine
 import UIKit
 
 class FavouritesViewController: UIViewController {
+    
+    // MARK: IBOutlets
     @IBOutlet var tableView: UITableView!
 
     // MARK: Properties
 
-    private var viewModel: FavouritesViewModel!
-    private var cancellable: [AnyCancellable] = []
     private lazy var datasource = [MovieViewModel]()
     private lazy var filteredDatasource = [MovieViewModel]()
     private lazy var searchBar = UISearchBar(frame: .zero)
@@ -25,7 +25,6 @@ class FavouritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = FavouritesViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +32,7 @@ class FavouritesViewController: UIViewController {
         configureUI()
     }
 
+    //Function
     private func configureUI() {
         title = Constants.Favourites.title
         isSearchBarActive = false
@@ -51,6 +51,7 @@ class FavouritesViewController: UIViewController {
         tableView.reloadData()
     }
 
+    // Helper Function
     @objc func cancelButtonTapped() {
         searchBar.text = ""
         searchBar.endEditing(true)
@@ -59,12 +60,14 @@ class FavouritesViewController: UIViewController {
         navigationItem.rightBarButtonItem = nil
     }
     
+    // MARK: View Lifecycle
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cancelButtonTapped()
     }
 }
 
+// MARK: Extension - UISearchBarDelegate
 extension FavouritesViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let isEmpty = searchBar.text?.isEmpty, isEmpty{
