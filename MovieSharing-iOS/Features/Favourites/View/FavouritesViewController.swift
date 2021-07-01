@@ -34,13 +34,13 @@ class FavouritesViewController: UIViewController {
     }
 
     private func configureUI() {
-        title = "Favourites"
+        title = Constants.Favourites.title
         isSearchBarActive = false
         datasource = SharedDataManager.shared
         filteredDatasource = datasource
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = Constants.Favourites.search
         searchBar.delegate = self
-        let micImage = UIImage(systemName: "mic.fill")
+        let micImage = UIImage(systemName: Constants.Icons.mic)
         searchBar.setImage(micImage, for: .bookmark, state: .normal)
         searchBar.showsBookmarkButton = true
         navigationItem.titleView = searchBar
@@ -73,7 +73,7 @@ extension FavouritesViewController: UISearchBarDelegate {
             isSearchBarActive = true
         }
         
-        let cancelSearchBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        let cancelSearchBarButtonItem = UIBarButtonItem(title: Constants.Favourites.cancel, style: .plain, target: self, action: #selector(cancelButtonTapped))
         navigationItem.setRightBarButton(cancelSearchBarButtonItem, animated: true)
     }
 
@@ -152,7 +152,7 @@ extension FavouritesViewController: UITableViewDataSource {
             return UIView()
         }
         let headerView = tableView.dequeueReusableCell(withClass: MovieHeaderViewCell.self)
-        headerView.configure("Category")
+        headerView.configure(Constants.Movies.headerTitle)
         return headerView
     }
 }

@@ -18,10 +18,22 @@ struct Constants {
         static let title = "Movie title"
         static let loadingMessage = "Loading details"
     }
+    
+    // Favourites constants
+    struct Favourites {
+        static let title = "Favourites"
+        static let search = "Search"
+        static let cancel = "Cancel"
+    }
+    // Favourites constants 
+    struct Settings {
+        static let title = "Settings"
+    }
     // Icons/Assets constants
     struct Icons{
         static let favoritesLight = "favorites_light"
         static let favoriteDisabled = "favorites_disabled"
+        static let mic = "mic.fill"
     }
     // Error constants
     struct Error {

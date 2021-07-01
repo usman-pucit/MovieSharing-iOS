@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController {
     }
 
     private func configureUI() {
-        title = "Settings"
+        title = Constants.Settings.title
         tableView.tableFooterView = UIView()
         tableView.reloadData()
     }
