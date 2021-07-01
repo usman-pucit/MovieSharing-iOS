@@ -5,6 +5,7 @@
 ### Components:
 - Language: Swift
 - MVVM architecture with [Combine](https://developer.apple.com/documentation/combine)
+- Coordinator for navigation
 - Abstract layer for multipe   `UseCases` & `ViewModels` and `ApiClients`
 - Builders
 - Codables
