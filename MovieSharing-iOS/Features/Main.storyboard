@@ -804,7 +804,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXW-Ay-L5Q" customClass="CosmosView" customModule="Cosmos">
-                                                                        <rect key="frame" x="20" y="10" width="110" height="25"/>
+                                                                        <rect key="frame" x="20" y="14" width="110" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="110" id="asd-J1-E4F"/>
                                                                         </constraints>
@@ -836,7 +836,7 @@
                                                                     <constraint firstAttribute="height" constant="35" id="5De-MX-gze"/>
                                                                     <constraint firstAttribute="bottom" secondItem="RXW-Ay-L5Q" secondAttribute="bottom" id="5u2-mY-GGQ"/>
                                                                     <constraint firstItem="RXW-Ay-L5Q" firstAttribute="leading" secondItem="9gd-A1-SGS" secondAttribute="trailing" constant="20" id="6Dh-UB-I05"/>
-                                                                    <constraint firstItem="RXW-Ay-L5Q" firstAttribute="top" secondItem="Jpw-Tl-8gP" secondAttribute="top" constant="10" id="8DC-lJ-PNo"/>
+                                                                    <constraint firstItem="RXW-Ay-L5Q" firstAttribute="top" secondItem="Jpw-Tl-8gP" secondAttribute="top" constant="14" id="8DC-lJ-PNo"/>
                                                                     <constraint firstAttribute="bottom" secondItem="9gd-A1-SGS" secondAttribute="bottom" constant="3" id="NlE-lD-mHq"/>
                                                                     <constraint firstItem="07a-Sg-5CJ" firstAttribute="leading" secondItem="9gd-A1-SGS" secondAttribute="trailing" id="hI4-Qt-uTs"/>
                                                                     <constraint firstItem="9gd-A1-SGS" firstAttribute="leading" secondItem="Jpw-Tl-8gP" secondAttribute="leading" id="inq-h9-bV7"/>

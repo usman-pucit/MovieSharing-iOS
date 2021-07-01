@@ -46,15 +46,15 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func configureUI() {
-        title = "Movie title"
+        title = Constants.Details.title
         labelRating.text = "\(viewModel.makeRating().leftPart)"
         labeDecimalRating.text = ".\(viewModel.makeRating().rightPart)"
         cosmosView.rating = viewModel.makeRating().rating
-        cosmosView.settings.starMargin = 12
-        cosmosView.settings.starSize = 20
+        cosmosView.settings.starMargin = 10
+        cosmosView.settings.starSize = 14
         cosmosView.settings.fillMode = .full
         add(activityIndicator)
-        activityIndicator.setTitle(title: "Loading details")
+        activityIndicator.setTitle(title: Constants.Details.loadingMessage)
     }
     
     private func setupNavigationBarButton() {
@@ -62,9 +62,9 @@ class MovieDetailsViewController: UIViewController {
         let id = movie.videoId
         
         if SharedDataManager.shared.contains(where: { movie in movie.videoId == id }) {
-            image = UIImage(named: "favorites_light")
+            image = UIImage(named: Constants.Icons.favoritesLight)
         } else {
-            image = UIImage(named: "favorites_disabled")
+            image = UIImage(named: Constants.Icons.favoriteDisabled)
         }
         
         let button = UIButton(type: UIButton.ButtonType.custom)
@@ -92,7 +92,7 @@ class MovieDetailsViewController: UIViewController {
         case .show(let details):
             render(details: details)
         case .noResults:
-            handleError("No results")
+            handleError(Constants.Error.noResults)
         case .error(let message):
             handleError(message)
         }
@@ -107,11 +107,11 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func handleError(_ message: String) {
-        showAlert(with: "Error", message: message)
+        showAlert(with: Constants.Error.errorTitle, message: message)
     }
     
     @objc func favouriteButtonTapped(_ sender: Any) {
-        var id = movie.videoId
+        let id = movie.videoId
         
         if SharedDataManager.shared.contains(where: { movie in movie.videoId == id }) {
             if let index = SharedDataManager.shared.firstIndex(where: { $0.videoId == id }) {

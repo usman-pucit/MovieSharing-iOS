@@ -12,25 +12,7 @@ import UIKit
 enum TableViewState {
     case grid
     case list
-    
-    var headerTitle: String? {
-        switch self {
-        case .grid:
-            return nil
-        case .list:
-            return "Category"
-        }
-    }
-    
-    var headerHeight: CGFloat {
-        switch self {
-        case .grid:
-            return 0.0
-        case .list:
-            return 50.0
-        }
-    }
-    
+
     var cellHeight: CGFloat {
         switch self {
         case .grid:
@@ -76,7 +58,7 @@ class MoviesViewController: UIViewController {
     }
     
     private func configureUI() {
-        title = "Movies"
+        title = Constants.Movies.title
         tableView.tableFooterView = UIView()
         tableView.registerNib(cellClass: MovieHeaderViewCell.self)
         tableView.registerNib(cellClass: MovieListViewCell.self)
@@ -105,14 +87,14 @@ class MoviesViewController: UIViewController {
         case .show(let movies):
             gridDataSource = movies
         case .noResults:
-            handleError("No results")
+            handleError(Constants.Error.noResults)
         case .error(let message):
             handleError(message)
         }
     }
     
     private func handleError(_ message: String) {
-        showAlert(with: "Error", message: message)
+        showAlert(with: Constants.Error.errorTitle, message: message)
     }
     
     @IBAction func didChangeSegmentControl(_ sender: UISegmentedControl) {
@@ -200,7 +182,7 @@ extension MoviesViewController: UITableViewDataSource {
             return UIView()
         }
         let headerView = tableView.dequeueReusableCell(withClass: MovieHeaderViewCell.self)
-        headerView.configure("Category")
+        headerView.configure(Constants.Movies.headerTitle)
         return headerView
     }
 }
