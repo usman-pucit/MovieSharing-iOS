@@ -18,7 +18,7 @@ enum TableViewState {
         case .grid:
             return 350
         case .list:
-            return 260
+            return 245
         }
     }
 }

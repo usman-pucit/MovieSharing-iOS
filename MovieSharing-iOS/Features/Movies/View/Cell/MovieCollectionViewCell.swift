@@ -22,6 +22,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet var mainView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var posterImage: UIImageView!
+    @IBOutlet var shadowView: UIView!
 
     // MARK: - Properties
 
@@ -34,9 +35,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
         movie = viewModel
         posterImage.layer.cornerRadius = 6
         posterImage.layer.masksToBounds = true
-        titleLabel.text = viewModel.title
+        titleLabel.text = viewModel.channelTitle
+        shadowView.addShadowAllAround(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 6.0, opacity: 0.35)
         posterImage.kf.setImage(with: viewModel.imagePoster)
-//        mainView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
     }
 
     @IBAction func cellTapped(_ sender: UIButton) {

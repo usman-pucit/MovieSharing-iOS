@@ -8,5 +8,5 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-API_KEY              = AIzaSyBS7aTi5zO6n8U5zBLA_KiT8V-tF2ntpJM
+API_KEY              = AIzaSyAiG-lMTEIo8ec4BhpQRJzqWJpTLAnq_cM
 BASE_URL             = https:/$()/youtube.googleapis.com/youtube/v3/

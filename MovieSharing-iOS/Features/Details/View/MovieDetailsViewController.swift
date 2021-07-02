@@ -22,8 +22,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var cosmosView: CosmosView!
     @IBOutlet var labelRating: UILabel!
     @IBOutlet var labeDecimalRating: UILabel!
-    @IBOutlet var posterImageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var thumbnailShadowView: UIView!
     
     // MARK: Properties
 
@@ -66,8 +65,11 @@ class MovieDetailsViewController: UIViewController {
         labeDecimalRating.text = ".\(rating.rightPart)"
         cosmosView.rating = rating.rating
         cosmosView.settings.starMargin = 10
-        cosmosView.settings.starSize = 14
+        cosmosView.settings.starSize = 16
         cosmosView.settings.fillMode = .full
+        imageThumbnail.addGradientBackground([UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.withAlphaComponent(0.0).cgColor,
+                                              UIColor.black.withAlphaComponent(0.3).cgColor], locations: [0, 0.5, 1])
+        thumbnailShadowView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
         add(activityIndicator)
         activityIndicator.setTitle(title: Constants.Details.loadingMessage)
     }
