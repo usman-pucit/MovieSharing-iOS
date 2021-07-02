@@ -22,7 +22,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var cosmosView: CosmosView!
     @IBOutlet var labelRating: UILabel!
     @IBOutlet var labeDecimalRating: UILabel!
-    @IBOutlet var mainView: UIView!
+    @IBOutlet var posterImageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     
     // MARK: Properties
 
@@ -37,7 +38,7 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         viewModel = MovieDetailsViewModel(useCase: MoviesUseCase())
         configureUI()
-        bindViewModel()
+//        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +46,21 @@ class MovieDetailsViewController: UIViewController {
         setupNavigationBarButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        bindViewModel()
+        setViewsOnDidAppear()
+    }
+    
+    private func setViewsOnDidAppear(){
+        imagePoster.addGradientBackground()
+    }
+    
     // MARK: Fuction
     private func configureUI() {
         title = movie.channelTitle
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         let rating = viewModel.makeRating()
         labelRating.text = "\(rating.leftPart)"
         labeDecimalRating.text = ".\(rating.rightPart)"
@@ -85,6 +98,11 @@ class MovieDetailsViewController: UIViewController {
         
         viewModel.$isLoading.sink(receiveValue: { isLoading in
             self.activityIndicator.view.isHidden = !isLoading
+            self.tabBarController?.tabBar.isHidden = isLoading
+            self.navigationController?.navigationBar.isHidden = isLoading
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            self.view.setNeedsDisplay()
         }).store(in: &cancellable)
         
         viewModel.request(Request.movieDetails(movie.videoId))
@@ -104,7 +122,7 @@ class MovieDetailsViewController: UIViewController {
     private func render(details: MovieDetailViewModel) {
         labelTitle.text = details.title
         labelGenres.text = details.genre
-        labelDescription.text = details.description
+        labelDescription.text = movie.description
         imagePoster.kf.setImage(with: details.posterImage)
         imageThumbnail.kf.setImage(with: details.thumnailImage)
     }

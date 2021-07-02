@@ -30,6 +30,6 @@ class MovieListViewCell: UITableViewCell {
         posterImage.layer.masksToBounds = true
         titleLabel.text = viewModel.title
         posterImage.kf.setImage(with: viewModel.imagePoster)
-        mainView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
+//        mainView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
     }
 }
