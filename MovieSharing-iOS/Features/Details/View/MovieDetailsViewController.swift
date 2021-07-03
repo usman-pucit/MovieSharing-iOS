@@ -85,6 +85,7 @@ class MovieDetailsViewController: UIViewController {
         cosmosView.settings.starMargin = 10
         cosmosView.settings.starSize = 16
         cosmosView.settings.fillMode = .full
+        cosmosView.settings.updateOnTouch = false
         imageThumbnail.addGradientBackground([UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.withAlphaComponent(0.0).cgColor,
                                               UIColor.black.withAlphaComponent(0.3).cgColor], locations: [0, 0.5, 1])
         thumbnailShadowView.addShadow(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 2.0, opacity: 0.35)
