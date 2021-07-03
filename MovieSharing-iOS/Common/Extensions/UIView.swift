@@ -31,7 +31,7 @@ extension UIView {
 }
 
 extension UIView {
-    func addGradientBackground(_ colors: [Any] = [UIColor.black.withAlphaComponent(1).cgColor, UIColor.black.withAlphaComponent(0.0).cgColor], locations: [NSNumber] = [0,0.6]) {
+    func addGradientBackground(_ colors: [Any] = [UIColor.black.withAlphaComponent(0.6).cgColor, UIColor.black.withAlphaComponent(0.0).cgColor], locations: [NSNumber] = [0,0.6]) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = colors
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
