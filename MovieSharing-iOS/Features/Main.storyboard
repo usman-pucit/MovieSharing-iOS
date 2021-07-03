@@ -873,6 +873,10 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="n4F-a4-cNt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRB-mt-4mS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="##title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tqa-UL-c3y">
                                         <rect key="frame" x="190" y="281.5" width="170" height="37"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
@@ -885,7 +889,11 @@
                                     <constraint firstItem="n4F-a4-cNt" firstAttribute="leading" secondItem="hd4-3a-UBQ" secondAttribute="leading" id="Dhd-DQ-JXq"/>
                                     <constraint firstAttribute="trailing" secondItem="Tqa-UL-c3y" secondAttribute="trailing" constant="15" id="F9n-CX-Nio"/>
                                     <constraint firstAttribute="bottom" secondItem="Tqa-UL-c3y" secondAttribute="bottom" constant="15" id="GR7-37-i1u"/>
+                                    <constraint firstItem="gRB-mt-4mS" firstAttribute="top" secondItem="n4F-a4-cNt" secondAttribute="top" id="KdP-Wz-VMX"/>
                                     <constraint firstAttribute="trailing" secondItem="n4F-a4-cNt" secondAttribute="trailing" id="Ow0-fy-gVf"/>
+                                    <constraint firstItem="gRB-mt-4mS" firstAttribute="leading" secondItem="n4F-a4-cNt" secondAttribute="leading" id="RmV-2v-U8f"/>
+                                    <constraint firstItem="gRB-mt-4mS" firstAttribute="bottom" secondItem="n4F-a4-cNt" secondAttribute="bottom" id="Upr-kV-vv2"/>
+                                    <constraint firstItem="gRB-mt-4mS" firstAttribute="trailing" secondItem="n4F-a4-cNt" secondAttribute="trailing" id="WpW-0v-c1K"/>
                                     <constraint firstItem="n4F-a4-cNt" firstAttribute="top" secondItem="hd4-3a-UBQ" secondAttribute="top" id="t4j-Lo-4lB"/>
                                 </constraints>
                             </view>
@@ -942,6 +950,7 @@
                         <outlet property="labelGenres" destination="agP-ji-l9M" id="3sb-Ze-aW0"/>
                         <outlet property="labelRating" destination="0XH-W5-4BT" id="lUh-vg-3R7"/>
                         <outlet property="labelTitle" destination="Tqa-UL-c3y" id="ZnB-qu-dFg"/>
+                        <outlet property="posterView" destination="gRB-mt-4mS" id="AQZ-kY-CVr"/>
                         <outlet property="thumbnailShadowView" destination="Ijd-Z2-6G5" id="maH-ix-dCl"/>
                     </connections>
                 </viewController>

@@ -23,6 +23,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var labelRating: UILabel!
     @IBOutlet var labeDecimalRating: UILabel!
     @IBOutlet var thumbnailShadowView: UIView!
+    @IBOutlet var posterView: UIView!
     
     // MARK: Properties
 
@@ -30,14 +31,28 @@ class MovieDetailsViewController: UIViewController {
     private var activityIndicator = ActivityViewController.loadFromNib()
     private var viewModel: MovieDetailsViewModel!
     private var cancellable: [AnyCancellable] = []
-    
+    private var isViewAppeared = false{
+        didSet{
+            if isViewAppeared && isLoading {
+                setupViewVisibility()
+            }
+        }
+    }
+    private var isLoading = true{
+        didSet{
+            if isViewAppeared && isLoading {
+                setupViewVisibility()
+            }
+        }
+    }
+    private var isFirstTimeLoaded = true
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MovieDetailsViewModel(useCase: MoviesUseCase())
         configureUI()
-//        bindViewModel()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,12 +62,15 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bindViewModel()
-        setViewsOnDidAppear()
+        isViewAppeared = true
+        if isFirstTimeLoaded {
+            isFirstTimeLoaded = false
+            setViewsOnDidAppear()
+        }
     }
     
     private func setViewsOnDidAppear(){
-        imagePoster.addGradientBackground()
+        posterView.addGradientBackground()
     }
     
     // MARK: Fuction
@@ -99,15 +117,19 @@ class MovieDetailsViewController: UIViewController {
         }).store(in: &cancellable)
         
         viewModel.$isLoading.sink(receiveValue: { isLoading in
-            self.activityIndicator.view.isHidden = !isLoading
-            self.tabBarController?.tabBar.isHidden = isLoading
-            self.navigationController?.navigationBar.isHidden = isLoading
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-            self.view.setNeedsDisplay()
+            self.isLoading = !isLoading
         }).store(in: &cancellable)
         
         viewModel.request(Request.movieDetails(movie.videoId))
+    }
+    
+    private func setupViewVisibility(){
+        self.activityIndicator.view.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        self.view.setNeedsDisplay()
     }
     
     private func handleResponse(_ result: MovieDetailsViewModelState) {

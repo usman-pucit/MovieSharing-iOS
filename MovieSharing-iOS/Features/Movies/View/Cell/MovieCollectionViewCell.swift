@@ -36,7 +36,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         posterImage.layer.cornerRadius = 6
         posterImage.layer.masksToBounds = true
         titleLabel.text = viewModel.channelTitle
-        shadowView.addShadowAllAround(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 6.0, opacity: 0.35)
+//        shadowView.addShadowAllAround(offset: CGSize(width: 0, height: 3), color: UIColor.black, radius: 6.0, opacity: 0.35)
         posterImage.kf.setImage(with: viewModel.imagePoster)
     }
 
